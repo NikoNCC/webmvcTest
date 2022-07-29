@@ -42,8 +42,8 @@
           ]
         },
         {
-          "title": "菜单管理",
-          "href": "page/menu.html",
+          "title": "用户管理",
+          "href": "/home/Privacy",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },

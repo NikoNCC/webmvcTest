@@ -85,11 +85,16 @@ namespace StorehouseSys.Controllers
         /// 获取用户数据
         /// </summary>
         /// <returns></returns>
-        public IActionResult GetUserInfos()
+        public IActionResult GetUserInfos(string UserName)
         {
             UserInfoBll userInfoBll = new UserInfoBll();
             var userInfos = userInfoBll.GetUserInfos();
             userInfos = userInfos.Where(a => a.IsDelete == false).ToList();
+            if (!string.IsNullOrEmpty(UserName))
+            {
+                userInfos = userInfos.Where(a => a.UserName == UserName).ToList();
+            }
+
             return Json(new {
                 code = 0,
                 msg = "用户数据",
