@@ -6,7 +6,7 @@ namespace Entiy.Tools
 {
      public class AjaxResult
     {
-        public int code { get; set; } = 0;
+        public int code { get; set; } = 500;
 
         public string Msg { get; set; } = "失败";
 

@@ -19,13 +19,18 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">账号</label>
         <div class="layui-input-block"> 
-            <input type="text" name="Account" lay-verify="required" lay-reqtext="用户名不能为空" placeholder="请输入用户名" value="" class="layui-input">
-            <tip>填写自己管理账号的名称。</tip>
+            <input type="text" name="Account" lay-verify="required" lay-reqtext="用户名不能为空" placeholder="请输入账号" value="" class="layui-input">
+            <tip>填写自己管理账号。</tip>
         </div>
         <label class="layui-form-label required">用户名</label>
         <div class="layui-input-block"> 
             <input type="text" name="UserName" lay-verify="required" lay-reqtext="用户名不能为空" placeholder="请输入用户名" value="" class="layui-input">
             <tip>填写自己管理账号的名称。</tip>
+        </div>
+        <label class="layui-form-label required">密码</label>
+        <div class="layui-input-block"> 
+            <input type="text" name="PassWord" lay-verify="required" lay-reqtext="密码不能为空" placeholder="请输入密码" value="" class="layui-input">
+            <tip>填写自己管理账号的密码。</tip>
         </div>
     </div>
     <div class="layui-form-item">
@@ -82,6 +87,7 @@
                     data: data.field,
                     success: function(res) { 
                         layer.msg(res.msg)
+                        window.location = "/Home/GetUserInfos"
                     }
                 })
         });

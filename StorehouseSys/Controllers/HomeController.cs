@@ -9,12 +9,67 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace StorehouseSys.Controllers
 {
     public class HomeController : Controller
     {
+
+
+
+        /// <summary>
+        /// 添加数据校验
+        /// </summary>
+        /// <returns></returns>
+
+
+        public AjaxResult ChackData(UserInfoDtos userInfoDtos)
+        {
+            if (string.IsNullOrEmpty(userInfoDtos.UserName))
+            {
+                return new AjaxResult {
+                   
+                    Msg = "用户名不能为空",
+
+                };
+            }
+            if (string.IsNullOrEmpty(userInfoDtos.Account))
+            {
+                return new AjaxResult
+                {
+
+                    Msg = "账号不能为空",
+
+                };
+            }
+            if (string.IsNullOrEmpty(userInfoDtos.PassWord)) {           
+                return new AjaxResult
+                {
+                    
+                    Msg = "密码不能为空",
+
+                };
+            }
+            if (!Regex.IsMatch(userInfoDtos.PhoneNum, @"^[1]+\d{10}"))
+            {
+                return new AjaxResult
+                {
+
+                    Msg = "手机号码格式错误",
+
+                };
+
+            }
+
+            return new AjaxResult {
+                
+                code = 0
+            };
+
+        }
+
 
 
         public IActionResult Index()
@@ -56,8 +111,15 @@ namespace StorehouseSys.Controllers
         [HttpPost]
         public IActionResult AddUserInfos(UserInfoDtos userInfoDtos)
         {
+            AjaxResult Result = new AjaxResult();
+            Result = ChackData(userInfoDtos);
 
-            UserInfoBll userInfoBll = new UserInfoBll();
+            if (Result.code != 0)
+            {
+                return Json(Result);
+                
+            }
+           UserInfoBll userInfoBll = new UserInfoBll();
             bool result = userInfoBll.AddUserInfos(userInfoDtos);
             if (result)
             {
@@ -106,16 +168,13 @@ namespace StorehouseSys.Controllers
                     Ses = true,
                 });
 
-            }
-            else
-            {
+            }            
                 return Json(new AjaxResult
                 {
                     code = 500,
                     Msg = "删除失败",
                     
                 });
-            }
         }
     }
 }
