@@ -1,0 +1,13 @@
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\bin\Debug\netcoreapp3.1\Entiy.deps.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\bin\Debug\netcoreapp3.1\Entiy.runtimeconfig.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\bin\Debug\netcoreapp3.1\Entiy.runtimeconfig.dev.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\bin\Debug\netcoreapp3.1\Entiy.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\bin\Debug\netcoreapp3.1\Entiy.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.csproj.AssemblyReference.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.AssemblyInfoInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.AssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.csproj.CoreCompileInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Entiy\obj\Debug\netcoreapp3.1\Entiy.genruntimeconfig.cache
