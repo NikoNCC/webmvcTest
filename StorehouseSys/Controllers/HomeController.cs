@@ -70,17 +70,34 @@ namespace StorehouseSys.Controllers
 
         }
 
-
-
+        //-----------------------------页面----------------------------
+        //主页
         public IActionResult Index()
         {
             return View();
         }
-
+        //用户管理页面
         public IActionResult Privacy()
         {
             return View();
         }
+        //添加页面
+        public IActionResult AddUserView()
+        {
+            return View();
+        }
+        //修改页面
+        public IActionResult UpdateUserView()
+        {
+            return View();
+        }
+
+
+
+
+
+
+        //-------------------------------功能---------------------------
         /// <summary>
         /// 获取用户数据
         /// </summary>
@@ -89,10 +106,12 @@ namespace StorehouseSys.Controllers
         {
             UserInfoBll userInfoBll = new UserInfoBll();
             var userInfos = userInfoBll.GetUserInfos();
+            //判断用户是否删除
             userInfos = userInfos.Where(a => a.IsDelete == false).ToList();
+            //查询用户名
             if (!string.IsNullOrEmpty(UserName))
             {
-                userInfos = userInfos.Where(a => a.UserName == UserName).ToList();
+                userInfos = userInfos.Where(a => a.UserName.Contains(UserName)).ToList();
             }
 
             return Json(new {
@@ -103,11 +122,6 @@ namespace StorehouseSys.Controllers
             });
         }
 
-
-        public IActionResult AddUserView()
-        {
-            return View();
-        }
         /// <summary>
         /// 添加用户
         /// </summary>
@@ -151,9 +165,9 @@ namespace StorehouseSys.Controllers
         /// <param name="ID"></param>
         /// <returns></returns>
         [HttpDelete]
-        public IActionResult DelUserInfo(string ID)
+        public IActionResult DelUserInfo(string[] IdList)
         {
-            if (string.IsNullOrEmpty(ID))
+            if (IdList == null)
             {
                 return Json(new AjaxResult
                 {
@@ -163,7 +177,7 @@ namespace StorehouseSys.Controllers
                 });
             }
             UserInfoBll userInfoBll = new UserInfoBll();
-            bool result = userInfoBll.DelUserInfo(ID);
+            bool result = userInfoBll.DelUserInfo(IdList);
             if (result)
             {
                 return Json(new AjaxResult

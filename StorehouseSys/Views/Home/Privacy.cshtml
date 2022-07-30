@@ -101,6 +101,7 @@
             limit: 15,
             page: true,
             skin: 'line',
+            id:"testReload"
         });
 
         // 监听搜索操作
@@ -112,7 +113,7 @@
                     curr: 1
                 }
                 , where: {
-                    
+                      UserName :data.field.username
                 }
             });
 
@@ -137,15 +138,36 @@
                     layer.full(index);
                 });
             } else if (obj.event === 'delete') {  // 监听删除操作
-                var checkStatus = table.checkStatus('currentTableId')
+                 var checkStatus = table.checkStatus('testReload')
                     , data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
+                layer.confirm('真的删除行么', function(index) {                 
+                    var IdList = []
+                    for (var i = 0; i < checkStatus.data.length; i++) {
+                        //console.log(checkStatus.data[i].id)
+                        IdList.push(checkStatus.data[i].id)
+                    }
+                   $.ajax({
+                        url: '/Home/DelUserInfo',
+                        type: 'delete',
+                        data: {IdList:IdList},
+                        success: function (res) {
+                            if (res.code == 200) {
+                                // 刷新展示页面
+                                layer.msg(res.msg)
+                                window.Location = "/Home/GetUserInfos"
+                            } else {
+                                layer.msg(res.msg)
+                            }
+                        }
+                    })
+
+                });
             }
         });
 
         //监听表格复选框选择
         table.on('checkbox(currentTableFilter)', function (obj) {
-            console.log(obj)
+           
         });
 
         table.on('tool(currentTableFilter)', function (obj) {
@@ -170,7 +192,7 @@
                     $.ajax({
                         url: '/Home/DelUserInfo',
                         type: 'delete',
-                        data: {Id:data.id},
+                        data: {IdList:data.id},
                         success: function (res) {
                             if (res.code == 200) {
                                 // 刷新展示页面

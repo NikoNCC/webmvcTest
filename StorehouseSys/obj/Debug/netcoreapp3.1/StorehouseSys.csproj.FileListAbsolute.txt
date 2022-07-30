@@ -382,3 +382,4 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Dal.dll
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Bll.pdb
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Dal.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUserView.cshtml.g.cs

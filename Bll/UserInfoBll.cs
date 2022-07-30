@@ -17,6 +17,7 @@ namespace Bll
         public List<UserInfo> GetUserInfos()
         {
             UserInfoDal userInfoDal = new UserInfoDal();
+
             return userInfoDal.GetUserInfos();
         }
         /// <summary>
@@ -34,7 +35,7 @@ namespace Bll
         /// </summary>
         /// <param name="iD"></param>
         /// <returns></returns>
-        public bool DelUserInfo(string iD)
+        public bool DelUserInfo(string[] iD)
         {
             UserInfoDal userInfoDal = new UserInfoDal();
         

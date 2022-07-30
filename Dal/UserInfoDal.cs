@@ -16,7 +16,7 @@ namespace Dal
         {
             using (StorehouseSysDbContext db = new StorehouseSysDbContext())
             {
-              return db.UserInfo.ToList();
+              return db.UserInfo.Where(a => a.IsDelete==false).ToList();
             }
         }
 
@@ -52,21 +52,27 @@ namespace Dal
         /// </summary>
         /// <param name="iD"></param>
         /// <returns></returns>
-        public bool DelUserInfo(string iD)
+        public bool DelUserInfo(string[] iD)
         {
             using (StorehouseSysDbContext db = new StorehouseSysDbContext())
             {
-                UserInfo userInfos = db.UserInfo.Find(iD);
-                if (userInfos == null)
+                List<UserInfo> userInfolist = new List<UserInfo>();
+                foreach (var i in iD)
                 {
-                    return false;
+                    UserInfo userInfos = db.UserInfo.Find(i);
+                    if (userInfos == null)
+                    {
+                        return false;
+                    }
+                    if (userInfos.IsDelete)
+                    {
+                        return false;
+                    }
+                    userInfos.IsDelete = true;
+                    userInfos.DeleteTime = DateTime.Now;
+                    userInfolist.Add(userInfos);
                 }
-                if (userInfos.IsDelete)
-                {
-                    return false;
-                }
-                userInfos.IsDelete = true;
-                db.UserInfo.Update(userInfos);
+                db.UserInfo.UpdateRange(userInfolist);
                 return  db.SaveChanges() > 0;
             }
          }
