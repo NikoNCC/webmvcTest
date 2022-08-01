@@ -1,0 +1,13 @@
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\Dal.deps.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\Dal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\Dal.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\Entiy.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\Entiy.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.csproj.AssemblyReference.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.AssemblyInfoInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.AssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.csproj.CoreCompileInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.csproj.CopyComplete
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.pdb

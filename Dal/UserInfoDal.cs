@@ -36,10 +36,10 @@ namespace Dal
                     CreateTime = DateTime.Now,
                     Email = userInfoDtos.Email,
                     Account = userInfoDtos.Account,
-                    Sex = userInfoDtos.Sex,
+                    Sex = userInfoDtos.Sex=="男"? 1:0,
                     PassWord = userInfoDtos.PassWord,
                     PhoneNum = userInfoDtos.PhoneNum,
-                    IsAdmin = userInfoDtos.IsAdmin,
+                    IsAdmin = userInfoDtos.IsAdmin == "是" ?true : false,
                 };
                db.UserInfo.Add(userInfo);
                return db.SaveChanges() > 0;

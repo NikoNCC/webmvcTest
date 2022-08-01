@@ -108,6 +108,7 @@ namespace StorehouseSys.Controllers
             var userInfos = userInfoBll.GetUserInfos();
             //判断用户是否删除
             userInfos = userInfos.Where(a => a.IsDelete == false).ToList();
+            
             //查询用户名
             if (!string.IsNullOrEmpty(UserName))
             {

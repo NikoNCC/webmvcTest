@@ -18,10 +18,11 @@ namespace StorehouseSys.Models.Dtos
 
         public string DepartmentId { get; set; }
 
-        public char Sex { get; set; }
+        public string Sex { get; set; }
 
-        public bool IsAdmin { get; set; }
+        public string IsAdmin { get; set; }
 
+        public bool IsDelete { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }

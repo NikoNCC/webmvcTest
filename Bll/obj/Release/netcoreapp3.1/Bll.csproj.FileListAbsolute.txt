@@ -1,0 +1,15 @@
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Bll.deps.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Bll.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Bll.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Dal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Entiy.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Dal.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Entiy.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.csproj.AssemblyReference.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.AssemblyInfoInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.AssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.csproj.CoreCompileInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.csproj.CopyComplete
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.pdb
