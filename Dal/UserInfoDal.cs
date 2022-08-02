@@ -15,10 +15,10 @@ namespace Dal
         /// <returns></returns>
         public DbSet<UserInfo> GetUserInfos()
         {
-            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
-            {
+            StorehouseSysDbContext db = new StorehouseSysDbContext();
+            
                 return db.UserInfo;
-            }
+            
         }
 
         /// <summary>
@@ -65,6 +65,18 @@ namespace Dal
                 return db.SaveChanges() > 0;
             }
         }
+
+        /// <summary>
+        /// 登录功能
+        /// </summary>
+        /// <returns></returns>
+        public UserInfo Login(string account)
+        {
+            StorehouseSysDbContext db = new StorehouseSysDbContext();
+            UserInfo userInfo = db.UserInfo.Where(u => u.Account ==account).FirstOrDefault();
+            return userInfo;
+        }
+
         /// <summary>
         /// 获取修改用户数据
         /// </summary>

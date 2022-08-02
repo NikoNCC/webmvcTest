@@ -10,7 +10,7 @@ namespace Bll
     public class UserInfoBll
     {
 
-        UserInfoDal userInfoDal = new UserInfoDal();
+        UserInfoDal _userInfoDal = new UserInfoDal();
 
         /// <summary>
         /// 获取用户数据
@@ -18,9 +18,9 @@ namespace Bll
         /// <returns></returns>
         public List<UserInfoDtos> GetUserInfos()
         {
-          IQueryable<UserInfo> userInfos =  userInfoDal.GetUserInfos();
+           List<UserInfo> userInfos =  _userInfoDal.GetUserInfos().ToList();
           List<UserInfoDtos> userInfoDtos = new List<UserInfoDtos>();
-            foreach (var i in userInfos.ToList())
+            foreach (var i in userInfos)
             {
                 userInfoDtos.Add(new UserInfoDtos
                 {
@@ -41,19 +41,51 @@ namespace Bll
             }
             return userInfoDtos;
         }
+
+        /// <summary>
+        /// 登录功能
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="passWord"></param>
+        /// <returns></returns>
+        public bool Login(string account, string passWord,out string msg,out string userName)
+        {
+         UserInfo userInfo = _userInfoDal.Login(account);
+            userName = null;
+            if (userInfo == null)
+            {
+              msg = "账号不存在";
+              return false;
+            }
+            string newPassWord = Comm.MD5Str.MD5(passWord);
+            if (userInfo.PassWord == newPassWord)
+            {
+                msg = "登录成功";
+                userName = userInfo.UserName;
+                return true;
+            }
+                msg = "密码错误";
+                return false;
+        }
+
+
+
         /// <summary>
         /// 添加用户
         /// </summary>
         /// <param name="userInfoDtos"></param>
         /// <returns></returns>
-        public bool AddUserInfos(UserInfoDtos userInfoDtos)
+        public bool AddUserInfos(UserInfoDtos userInfoDtos,out string msg)
         {
             string newpassword = Comm.MD5Str.MD5(userInfoDtos.PassWord);
-            UserInfo userInfos = userInfoDal.GetUserInfos().FirstOrDefault(u => u.Account == userInfoDtos.Account);
+            UserInfo userInfos = _userInfoDal.GetUserInfos().FirstOrDefault(u => u.Account == userInfoDtos.Account);
             //判断用户是否存在
+           
             if (userInfos != null)
             {
+                msg = "用户不存在";
                 return false;
+              
             }
             UserInfo userInfo = new UserInfo()
             {
@@ -68,8 +100,8 @@ namespace Bll
                 PhoneNum = userInfoDtos.PhoneNum,
                 IsAdmin = userInfoDtos.IsAdmin == "是" ? true : false,
             };
-
-            return userInfoDal.AddUserInfos(userInfo);
+            msg = "添加成功";
+            return _userInfoDal.AddUserInfos(userInfo);
         }
         /// <summary>
         /// 删除用户
@@ -79,7 +111,7 @@ namespace Bll
         public bool DelUserInfo(string[] iD)
         {
                
-                return userInfoDal.DelUserInfo(iD);
+                return _userInfoDal.DelUserInfo(iD);
         }
 
         /// <summary>
@@ -89,7 +121,7 @@ namespace Bll
         /// <returns></returns>
         public UserInfoDtos GetUserInfoById(string id)
         {
-            UserInfo userInfo = userInfoDal.GetUserInfoById(id);
+            UserInfo userInfo = _userInfoDal.GetUserInfoById(id);
 
             UserInfoDtos userInfoDtos = new UserInfoDtos()
             {
@@ -106,9 +138,14 @@ namespace Bll
             return userInfoDtos;
         }
 
+        /// <summary>
+        /// 修改功能
+        /// </summary>
+        /// <param name="userInfoDtos"></param>
+        /// <returns></returns>
         public bool UpdateUserInfo(UserInfoDtos userInfoDtos)
         {
-            UserInfo userInfo = userInfoDal.GetUserInfoById(userInfoDtos.Id);
+            UserInfo userInfo = _userInfoDal.GetUserInfoById(userInfoDtos.Id);
             if (userInfo != null)
             { 
                     userInfo.Id = userInfoDtos.Id;
@@ -120,7 +157,7 @@ namespace Bll
                     userInfo.Email = userInfoDtos.Email;
                     userInfo.CreateTime = DateTime.Now;
             }
-            return userInfoDal.UpdateUserInfo(userInfo);
+            return _userInfoDal.UpdateUserInfo(userInfo);
         }
     }
 }

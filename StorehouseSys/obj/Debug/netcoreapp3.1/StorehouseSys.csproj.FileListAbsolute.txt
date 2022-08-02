@@ -385,3 +385,4 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Comm.dll
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Comm.pdb
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Login\LoginView.cshtml.g.cs

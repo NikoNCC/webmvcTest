@@ -140,13 +140,15 @@ namespace StorehouseSys.Controllers
                 
             }
            UserInfoBll userInfoBll = new UserInfoBll();
-            bool result = userInfoBll.AddUserInfos(userInfoDtos);
+            string msg;
+            bool result = userInfoBll.AddUserInfos(userInfoDtos,out msg);
+            
             if (result)
             {
                 return Json(new AjaxResult
                 {
                     code = 0,
-                    Msg = "添加成功",
+                    Msg =msg,
                     Ses = true,
                 });
 
@@ -154,7 +156,7 @@ namespace StorehouseSys.Controllers
             else {
                 return Json(new AjaxResult {
                     code = 500,
-                    Msg = "添加失败",
+                    Msg = msg,
                     Ses = false,
                 });
             }
