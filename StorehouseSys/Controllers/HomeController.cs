@@ -23,8 +23,6 @@ namespace StorehouseSys.Controllers
         /// 添加数据校验
         /// </summary>
         /// <returns></returns>
-
-
         public AjaxResult ChackData(UserInfoDtos userInfoDtos)
         {
             if (string.IsNullOrEmpty(userInfoDtos.UserName))
@@ -94,7 +92,7 @@ namespace StorehouseSys.Controllers
 
 
 
-
+        UserInfoBll userInfoBll = new UserInfoBll();
 
 
         //-------------------------------功能---------------------------
@@ -102,7 +100,7 @@ namespace StorehouseSys.Controllers
         /// 获取用户数据
         /// </summary>
         /// <returns></returns>
-        public IActionResult GetUserInfos(string UserName)
+        public IActionResult GetUserInfos(string UserName,int page,int limnt)
         {
             UserInfoBll userInfoBll = new UserInfoBll();
             var userInfos = userInfoBll.GetUserInfos();
@@ -195,6 +193,87 @@ namespace StorehouseSys.Controllers
                     Msg = "删除失败",
                     
                 });
+        }
+
+
+        /// <summary>
+        /// 查询修改用户
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult GetUserInfoById(string id)
+        {
+
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return Json(new AjaxResult
+                {
+
+                    Msg = "选中的用户不存在",
+
+                });
+            }
+            UserInfoDtos userInfo = userInfoBll.GetUserInfoById(id);
+             if(userInfo != null)
+            {
+                return Json(new AjaxResult
+                {
+                    code = 0,
+                    Msg = "查询成功",
+                    Ses = true,
+                    Data = userInfo
+                });
+
+            }
+            return Json(new AjaxResult
+            {
+                code = 500,
+                Msg = "查询失败",
+
+            });
+        }
+
+        /// <summary>
+        /// 修改功能
+        /// </summary>
+        /// <param name="userInfoDtos"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult UpdateUserInfo(UserInfoDtos userInfoDtos)
+        {
+            if (userInfoDtos == null)
+            {
+                return Json(new AjaxResult
+                {
+
+                    Msg = "选中的用户不存在",
+
+                });
+            }
+
+
+            bool result =userInfoBll.UpdateUserInfo(userInfoDtos);
+            if (result)
+            {
+                return Json(new AjaxResult
+                {
+                    code = 0,
+                    Msg = "修改成功",
+                    Ses = true,
+                });
+
+            }
+
+            return Json(new AjaxResult
+            {
+                code = 500,
+                Msg = "查询失败",
+
+            });
+
+
         }
     }
 }

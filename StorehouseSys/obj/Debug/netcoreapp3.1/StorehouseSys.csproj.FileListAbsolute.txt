@@ -358,7 +358,6 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.AssemblyInfoInputs.cache
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.AssemblyInfo.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.csproj.CoreCompileInputs.cache
-C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.RazorAssemblyInfo.cache
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.RazorAssemblyInfo.cs

@@ -16,7 +16,7 @@ namespace Dal
         {
             using (StorehouseSysDbContext db = new StorehouseSysDbContext())
             {
-              return db.UserInfo.Where(a => a.IsDelete==false).ToList();
+                return db.UserInfo.Where(a => a.IsDelete == false).ToList();
             }
         }
 
@@ -29,22 +29,23 @@ namespace Dal
         {
             using (StorehouseSysDbContext db = new StorehouseSysDbContext())
             {
-                UserInfo userInfo = new UserInfo() {
+                UserInfo userInfo = new UserInfo()
+                {
                     UserName = userInfoDtos.UserName,
                     Id = Guid.NewGuid().ToString(),
                     DepartmentId = userInfoDtos.DepartmentId,
                     CreateTime = DateTime.Now,
                     Email = userInfoDtos.Email,
                     Account = userInfoDtos.Account,
-                    Sex = userInfoDtos.Sex=="男"? 1:0,
+                    Sex = userInfoDtos.Sex == "男" ? 1 : 0,
                     PassWord = userInfoDtos.PassWord,
                     PhoneNum = userInfoDtos.PhoneNum,
-                    IsAdmin = userInfoDtos.IsAdmin == "是" ?true : false,
+                    IsAdmin = userInfoDtos.IsAdmin == "是" ? true : false,
                 };
-               db.UserInfo.Add(userInfo);
-               return db.SaveChanges() > 0;
+                db.UserInfo.Add(userInfo);
+                return db.SaveChanges() > 0;
             }
-            
+
         }
 
         /// <summary>
@@ -73,8 +74,36 @@ namespace Dal
                     userInfolist.Add(userInfos);
                 }
                 db.UserInfo.UpdateRange(userInfolist);
-                return  db.SaveChanges() > 0;
+                return db.SaveChanges() > 0;
             }
-         }
+        }
+        /// <summary>
+        /// 获取修改用户数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserInfo GetUserInfoById(string id)
+        {
+
+            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
+            {
+                return db.UserInfo.FirstOrDefault(x => x.Id == id);
+
+            }
+        }
+        /// <summary>
+        /// 修改用户数据
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
+        public bool UpdateUserInfo(UserInfo userInfo)
+        {
+            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
+            {
+                db.UserInfo.Update(userInfo);
+                return db.SaveChanges() > 0;
+
+            }
+        }
     }
 }

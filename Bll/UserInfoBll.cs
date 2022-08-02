@@ -61,5 +61,46 @@ namespace Bll
                
                 return userInfoDal.DelUserInfo(iD);
         }
+
+        /// <summary>
+        /// 查询修改用户数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserInfoDtos GetUserInfoById(string id)
+        {
+            UserInfo userInfo = userInfoDal.GetUserInfoById(id);
+
+            UserInfoDtos userInfoDtos = new UserInfoDtos()
+            {
+                Id = userInfo.Id,
+                UserName = userInfo.UserName,
+                Sex = userInfo.Sex == 1 ? "男" : "女",
+                Email = userInfo.Email,
+                Account = userInfo.Account,
+                DepartmentId = userInfo.DepartmentId,
+                PhoneNum = userInfo.PhoneNum,
+                IsAdmin = userInfo.IsAdmin == true ? "是" : "否",
+                CreateTime = userInfo.CreateTime
+            };
+            return userInfoDtos;
+        }
+
+        public bool UpdateUserInfo(UserInfoDtos userInfoDtos)
+        {
+            UserInfo userInfo = userInfoDal.GetUserInfoById(userInfoDtos.Id);
+            if (userInfo != null)
+            { 
+                    userInfo.Id = userInfoDtos.Id;
+                    userInfo.Account =userInfoDtos.Account;
+                    userInfo.DepartmentId = userInfoDtos.DepartmentId;
+                    userInfo.PhoneNum = userInfoDtos.PhoneNum;
+                    userInfo.UserName = userInfoDtos.UserName;
+                    userInfo.Sex = userInfoDtos.Sex.Equals("男") ?  1 : 0;
+                    userInfo.Email = userInfoDtos.Email;
+                    userInfo.CreateTime = DateTime.Now;
+            }
+            return userInfoDal.UpdateUserInfo(userInfo);
+        }
     }
 }
