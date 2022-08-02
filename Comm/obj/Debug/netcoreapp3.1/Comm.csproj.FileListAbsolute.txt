@@ -1,0 +1,10 @@
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\bin\Debug\netcoreapp3.1\Comm.deps.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\bin\Debug\netcoreapp3.1\Comm.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\bin\Debug\netcoreapp3.1\Comm.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.csproj.AssemblyReference.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.AssemblyInfoInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.AssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.csproj.CoreCompileInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Comm\obj\Debug\netcoreapp3.1\Comm.pdb

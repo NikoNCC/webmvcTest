@@ -1483,6 +1483,16 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Comm/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Comm.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Comm.dll": {}
+        }
+      },
       "Dal/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -5721,6 +5731,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Comm/1.0.0": {
+      "type": "project",
+      "path": "../Comm/Comm.csproj",
+      "msbuildProject": "../Comm/Comm.csproj"
+    },
     "Dal/1.0.0": {
       "type": "project",
       "path": "../Dal/Dal.csproj",
@@ -5734,6 +5749,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Comm >= 1.0.0",
       "Dal >= 1.0.0",
       "Entiy >= 1.0.0"
     ]
@@ -5765,6 +5781,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Comm\\Comm.csproj": {
+              "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Comm\\Comm.csproj"
+            },
             "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Dal\\Dal.csproj": {
               "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Dal\\Dal.csproj"
             },

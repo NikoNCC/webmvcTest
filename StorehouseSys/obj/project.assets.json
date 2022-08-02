@@ -1752,6 +1752,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Comm": "1.0.0",
           "Dal": "1.0.0",
           "Entiy": "1.0.0"
         },
@@ -1760,6 +1761,16 @@
         },
         "runtime": {
           "bin/placeholder/Bll.dll": {}
+        }
+      },
+      "Comm/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Comm.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Comm.dll": {}
         }
       },
       "Dal/1.0.0": {
@@ -6368,6 +6379,11 @@
       "type": "project",
       "path": "../Bll/Bll.csproj",
       "msbuildProject": "../Bll/Bll.csproj"
+    },
+    "Comm/1.0.0": {
+      "type": "project",
+      "path": "../Comm/Comm.csproj",
+      "msbuildProject": "../Comm/Comm.csproj"
     },
     "Dal/1.0.0": {
       "type": "project",

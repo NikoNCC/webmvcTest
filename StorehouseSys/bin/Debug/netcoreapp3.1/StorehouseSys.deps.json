@@ -1608,6 +1608,7 @@
       },
       "Bll/1.0.0": {
         "dependencies": {
+          "Comm": "1.0.0",
           "Dal": "1.0.0",
           "Entiy": "1.0.0"
         },
@@ -1616,6 +1617,14 @@
         },
         "compile": {
           "Bll.dll": {}
+        }
+      },
+      "Comm/1.0.0": {
+        "runtime": {
+          "Comm.dll": {}
+        },
+        "compile": {
+          "Comm.dll": {}
         }
       },
       "Dal/1.0.0": {
@@ -4027,6 +4036,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Bll/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Comm/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

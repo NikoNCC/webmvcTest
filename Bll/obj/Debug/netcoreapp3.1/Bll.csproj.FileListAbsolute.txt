@@ -13,3 +13,5 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Debug\netcoreapp3.1\Ent
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Debug\netcoreapp3.1\Dal.pdb
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Debug\netcoreapp3.1\Entiy.pdb
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Debug\netcoreapp3.1\Bll.csproj.CopyComplete
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Debug\netcoreapp3.1\Comm.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Debug\netcoreapp3.1\Comm.pdb

@@ -100,12 +100,14 @@ namespace StorehouseSys.Controllers
         /// 获取用户数据
         /// </summary>
         /// <returns></returns>
-        public IActionResult GetUserInfos(string UserName,int page,int limnt)
+        public IActionResult GetUserInfos(string UserName,int page,int limit)
         {
             UserInfoBll userInfoBll = new UserInfoBll();
             var userInfos = userInfoBll.GetUserInfos();
+            int Count = userInfos.Count;
             //判断用户是否删除
-            userInfos = userInfos.Where(a => a.IsDelete == false).ToList();
+            userInfos = userInfos.Where(a => a.IsDelete == false).Skip((page - 1) * limit).Take(limit).ToList();
+            
             
             //查询用户名
             if (!string.IsNullOrEmpty(UserName))
@@ -116,7 +118,7 @@ namespace StorehouseSys.Controllers
             return Json(new {
                 code = 0,
                 msg = "用户数据",
-                count = userInfos.Count,
+                count =Count,
                 data = userInfos,
             });
         }

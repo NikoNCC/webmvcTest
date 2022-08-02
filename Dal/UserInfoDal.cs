@@ -1,4 +1,5 @@
 ﻿using Entiy;
+using Microsoft.EntityFrameworkCore;
 using StorehouseSys.Models.Dtos;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace Dal
         /// 用户数据
         /// </summary>
         /// <returns></returns>
-        public List<UserInfo> GetUserInfos()
+        public DbSet<UserInfo> GetUserInfos()
         {
             using (StorehouseSysDbContext db = new StorehouseSysDbContext())
             {
-                return db.UserInfo.Where(a => a.IsDelete == false).ToList();
+                return db.UserInfo;
             }
         }
 
@@ -25,23 +26,10 @@ namespace Dal
         /// </summary>
         /// <param name="userInfoDtos"></param>
         /// <returns></returns>
-        public bool AddUserInfos(UserInfoDtos userInfoDtos)
+        public bool AddUserInfos(UserInfo userInfo)
         {
             using (StorehouseSysDbContext db = new StorehouseSysDbContext())
             {
-                UserInfo userInfo = new UserInfo()
-                {
-                    UserName = userInfoDtos.UserName,
-                    Id = Guid.NewGuid().ToString(),
-                    DepartmentId = userInfoDtos.DepartmentId,
-                    CreateTime = DateTime.Now,
-                    Email = userInfoDtos.Email,
-                    Account = userInfoDtos.Account,
-                    Sex = userInfoDtos.Sex == "男" ? 1 : 0,
-                    PassWord = userInfoDtos.PassWord,
-                    PhoneNum = userInfoDtos.PhoneNum,
-                    IsAdmin = userInfoDtos.IsAdmin == "是" ? true : false,
-                };
                 db.UserInfo.Add(userInfo);
                 return db.SaveChanges() > 0;
             }

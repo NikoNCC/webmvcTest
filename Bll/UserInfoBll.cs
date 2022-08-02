@@ -3,6 +3,7 @@ using Entiy;
 using StorehouseSys.Models.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bll
 {
@@ -17,10 +18,9 @@ namespace Bll
         /// <returns></returns>
         public List<UserInfoDtos> GetUserInfos()
         {
-           
-            List<UserInfo> userInfos =  userInfoDal.GetUserInfos();
-          List< UserInfoDtos> userInfoDtos = new List<UserInfoDtos>();
-            foreach (var i in userInfos)
+          IQueryable<UserInfo> userInfos =  userInfoDal.GetUserInfos();
+          List<UserInfoDtos> userInfoDtos = new List<UserInfoDtos>();
+            foreach (var i in userInfos.ToList())
             {
                 userInfoDtos.Add(new UserInfoDtos
                 {
@@ -48,8 +48,28 @@ namespace Bll
         /// <returns></returns>
         public bool AddUserInfos(UserInfoDtos userInfoDtos)
         {
-                 
-              return userInfoDal.AddUserInfos(userInfoDtos);
+            string newpassword = Comm.MD5Str.MD5(userInfoDtos.PassWord);
+            UserInfo userInfos = userInfoDal.GetUserInfos().FirstOrDefault(u => u.Account == userInfoDtos.Account);
+            //判断用户是否存在
+            if (userInfos != null)
+            {
+                return false;
+            }
+            UserInfo userInfo = new UserInfo()
+            {
+                UserName = userInfoDtos.UserName,
+                Id = Guid.NewGuid().ToString(),
+                DepartmentId = userInfoDtos.DepartmentId,
+                CreateTime = DateTime.Now,
+                Email = userInfoDtos.Email,
+                Account = userInfoDtos.Account,
+                Sex = userInfoDtos.Sex == "男" ? 1 : 0,
+                PassWord = newpassword,
+                PhoneNum = userInfoDtos.PhoneNum,
+                IsAdmin = userInfoDtos.IsAdmin == "是" ? true : false,
+            };
+
+            return userInfoDal.AddUserInfos(userInfo);
         }
         /// <summary>
         /// 删除用户
