@@ -1,6 +1,8 @@
 ﻿using Bll;
 using Entiy;
 using Entiy.Tools;
+using IBLL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StorehouseSys.Models;
@@ -16,8 +18,12 @@ namespace StorehouseSys.Controllers
 {
     public class HomeController : Controller
     {
+        IUserInfoBLL _userInfoBLL;
 
-
+        public HomeController(IUserInfoBLL userInfoBLL)
+        {
+            _userInfoBLL = userInfoBLL;
+        }
 
         /// <summary>
         /// 添加数据校验
@@ -92,7 +98,7 @@ namespace StorehouseSys.Controllers
 
 
 
-        UserInfoBll userInfoBll = new UserInfoBll();
+
 
 
         //-------------------------------功能---------------------------
@@ -100,10 +106,11 @@ namespace StorehouseSys.Controllers
         /// 获取用户数据
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult GetUserInfos(string UserName,int page,int limit)
         {
-            UserInfoBll userInfoBll = new UserInfoBll();
-            var userInfos = userInfoBll.GetUserInfos();
+            
+            var userInfos = _userInfoBLL.GetUserInfos();
             int Count = userInfos.Count;
             //判断用户是否删除
             userInfos = userInfos.Where(a => a.IsDelete == false).Skip((page - 1) * limit).Take(limit).ToList();
@@ -139,9 +146,9 @@ namespace StorehouseSys.Controllers
                 return Json(Result);
                 
             }
-           UserInfoBll userInfoBll = new UserInfoBll();
+           
             string msg;
-            bool result = userInfoBll.AddUserInfos(userInfoDtos,out msg);
+            bool result = _userInfoBLL.AddUserInfos(userInfoDtos,out msg);
             
             if (result)
             {
@@ -179,8 +186,8 @@ namespace StorehouseSys.Controllers
                    
                 });
             }
-            UserInfoBll userInfoBll = new UserInfoBll();
-            bool result = userInfoBll.DelUserInfo(IdList);
+           
+            bool result = _userInfoBLL.DelUserInfo(IdList);
             if (result)
             {
                 return Json(new AjaxResult
@@ -219,7 +226,7 @@ namespace StorehouseSys.Controllers
 
                 });
             }
-            UserInfoDtos userInfo = userInfoBll.GetUserInfoById(id);
+            UserInfoDtos userInfo = _userInfoBLL.GetUserInfoById(id);
              if(userInfo != null)
             {
                 return Json(new AjaxResult
@@ -258,7 +265,7 @@ namespace StorehouseSys.Controllers
             }
 
 
-            bool result =userInfoBll.UpdateUserInfo(userInfoDtos);
+            bool result = _userInfoBLL.UpdateUserInfo(userInfoDtos);
             if (result)
             {
                 return Json(new AjaxResult

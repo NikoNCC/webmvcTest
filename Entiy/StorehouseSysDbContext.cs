@@ -7,15 +7,19 @@ namespace Entiy
 {
     public class StorehouseSysDbContext: DbContext
     {
-        public StorehouseSysDbContext()
-        { 
-            
+        public StorehouseSysDbContext(DbContextOptions<StorehouseSysDbContext> options) : base(options)
+        {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlServer($"Data Source=.;Initial Catalog=StorehouseSys;User ID=sa;Password=123");
-        }
+        //public StorehouseSysDbContext()
+        //{ 
+
+        //}
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    options.UseSqlServer($"Data Source=.;Initial Catalog=StorehouseSys;User ID=sa;Password=123");
+        //}
 
 
         public DbSet<UserInfo> UserInfo { get; set; }

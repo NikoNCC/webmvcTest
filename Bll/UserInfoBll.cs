@@ -1,5 +1,7 @@
 ﻿using Dal;
 using Entiy;
+using IBLL;
+using IDal;
 using StorehouseSys.Models.Dtos;
 using System;
 using System.Collections.Generic;
@@ -7,10 +9,16 @@ using System.Linq;
 
 namespace Bll
 {
-    public class UserInfoBll
+    public class UserInfoBll : IUserInfoBLL
     {
 
-        UserInfoDal _userInfoDal = new UserInfoDal();
+        IUserInfoDal _userInfoDal;
+
+        public UserInfoBll(IUserInfoDal userInfoDal)
+        {
+            _userInfoDal = userInfoDal;
+        }
+
 
         /// <summary>
         /// 获取用户数据
@@ -18,7 +26,7 @@ namespace Bll
         /// <returns></returns>
         public List<UserInfoDtos> GetUserInfos()
         {
-           List<UserInfo> userInfos =  _userInfoDal.GetUserInfos().ToList();
+            List<UserInfo> userInfos = _userInfoDal.GetUserInfos().ToList();
           List<UserInfoDtos> userInfoDtos = new List<UserInfoDtos>();
             foreach (var i in userInfos)
             {

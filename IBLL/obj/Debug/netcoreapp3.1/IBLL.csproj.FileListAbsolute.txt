@@ -1,0 +1,13 @@
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\bin\Debug\netcoreapp3.1\IBLL.deps.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\bin\Debug\netcoreapp3.1\IBLL.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\bin\Debug\netcoreapp3.1\IBLL.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\bin\Debug\netcoreapp3.1\Entiy.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\bin\Debug\netcoreapp3.1\Entiy.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.csproj.AssemblyReference.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.AssemblyInfoInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.AssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.csproj.CoreCompileInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.csproj.CopyComplete
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IBLL\obj\Debug\netcoreapp3.1\IBLL.pdb

@@ -8,6 +8,7 @@
     <ProjectReference Include="..\Comm\Comm.csproj" />
     <ProjectReference Include="..\Dal\Dal.csproj" />
     <ProjectReference Include="..\Entiy\Entiy.csproj" />
+    <ProjectReference Include="..\IBLL\IBLL.csproj" />
   </ItemGroup>
 
 </Project>

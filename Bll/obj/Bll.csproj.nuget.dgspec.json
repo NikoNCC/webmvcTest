@@ -36,6 +36,9 @@
               },
               "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj": {
                 "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj"
+              },
+              "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IBLL\\IBLL.csproj": {
+                "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IBLL\\IBLL.csproj"
               }
             }
           }
@@ -103,6 +106,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -148,6 +157,9 @@
             "projectReferences": {
               "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj": {
                 "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj"
+              },
+              "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj": {
+                "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj"
               }
             }
           }
@@ -233,6 +245,122 @@
               "version": "[5.0.17, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IBLL\\IBLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IBLL\\IBLL.csproj",
+        "projectName": "IBLL",
+        "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IBLL\\IBLL.csproj",
+        "packagesPath": "C:\\Users\\777\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IBLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\777\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj": {
+                "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj",
+        "projectName": "IDal",
+        "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj",
+        "packagesPath": "C:\\Users\\777\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\777\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj": {
+                "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",

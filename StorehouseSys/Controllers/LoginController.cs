@@ -1,16 +1,30 @@
 ﻿using Bll;
+using Comm;
 using Entiy.Tools;
+using IBLL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StorehouseSys.Controllers
 {
     public class LoginController : Controller
     {
-        UserInfoBll _userInfoBll = new UserInfoBll();
+        /// <summary>
+        /// 注册BLL
+        /// </summary>
+        IUserInfoBLL _userInfoBLL;
+
+        public LoginController(IUserInfoBLL userInfoBLL)
+        {
+            _userInfoBLL = userInfoBLL;
+        }
+
+        [LoginFiter]
         public IActionResult LoginView()
         {
             return View();
         }
+
         public IActionResult Login(string account, string passWord)
         {
             if (string.IsNullOrEmpty(account))
@@ -30,17 +44,19 @@ namespace StorehouseSys.Controllers
             }
             string msg;
             string userName;
-            bool result = _userInfoBll.Login(account,passWord,out msg,out userName);
+            bool result = _userInfoBLL.Login(account,passWord,out msg,out userName);
             if (result)
             {
+                HttpContext.Session.SetString("UserName", userName);
                 return Json(new AjaxResult
                 {
                     code = 200,
                     Msg = msg,
                     Data= userName,
-                    Ses = true
-                });
+                    Ses = true,
 
+                });
+                
             }
             else {
 

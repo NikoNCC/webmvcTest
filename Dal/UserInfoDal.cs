@@ -1,4 +1,5 @@
 ﻿using Entiy;
+using IDal;
 using Microsoft.EntityFrameworkCore;
 using StorehouseSys.Models.Dtos;
 using System;
@@ -7,17 +8,25 @@ using System.Linq;
 
 namespace Dal
 {
-    public class UserInfoDal
+    public class UserInfoDal: IUserInfoDal
     {
+        private StorehouseSysDbContext _db;
+
+        public UserInfoDal(StorehouseSysDbContext db)
+        {
+            _db = db;
+        }
+
+
         /// <summary>
         /// 用户数据
         /// </summary>
         /// <returns></returns>
         public DbSet<UserInfo> GetUserInfos()
         {
-            StorehouseSysDbContext db = new StorehouseSysDbContext();
+           
             
-                return db.UserInfo;
+                return _db.UserInfo;
             
         }
 
@@ -28,11 +37,10 @@ namespace Dal
         /// <returns></returns>
         public bool AddUserInfos(UserInfo userInfo)
         {
-            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
-            {
-                db.UserInfo.Add(userInfo);
-                return db.SaveChanges() > 0;
-            }
+            
+                _db.UserInfo.Add(userInfo);
+                return _db.SaveChanges() > 0;
+            
 
         }
 
@@ -43,12 +51,11 @@ namespace Dal
         /// <returns></returns>
         public bool DelUserInfo(string[] iD)
         {
-            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
-            {
+            
                 List<UserInfo> userInfolist = new List<UserInfo>();
                 foreach (var i in iD)
                 {
-                    UserInfo userInfos = db.UserInfo.Find(i);
+                    UserInfo userInfos = _db.UserInfo.Find(i);
                     if (userInfos == null)
                     {
                         return false;
@@ -61,9 +68,9 @@ namespace Dal
                     userInfos.DeleteTime = DateTime.Now;
                     userInfolist.Add(userInfos);
                 }
-                db.UserInfo.UpdateRange(userInfolist);
-                return db.SaveChanges() > 0;
-            }
+            _db.UserInfo.UpdateRange(userInfolist);
+                return _db.SaveChanges() > 0;
+            
         }
 
         /// <summary>
@@ -72,8 +79,8 @@ namespace Dal
         /// <returns></returns>
         public UserInfo Login(string account)
         {
-            StorehouseSysDbContext db = new StorehouseSysDbContext();
-            UserInfo userInfo = db.UserInfo.Where(u => u.Account ==account).FirstOrDefault();
+            
+            UserInfo userInfo = _db.UserInfo.Where(u => u.Account ==account).FirstOrDefault();
             return userInfo;
         }
 
@@ -85,11 +92,10 @@ namespace Dal
         public UserInfo GetUserInfoById(string id)
         {
 
-            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
-            {
-                return db.UserInfo.FirstOrDefault(x => x.Id == id);
+            
+                return _db.UserInfo.FirstOrDefault(x => x.Id == id);
 
-            }
+            
         }
         /// <summary>
         /// 修改用户数据
@@ -98,12 +104,11 @@ namespace Dal
         /// <returns></returns>
         public bool UpdateUserInfo(UserInfo userInfo)
         {
-            using (StorehouseSysDbContext db = new StorehouseSysDbContext())
-            {
-                db.UserInfo.Update(userInfo);
-                return db.SaveChanges() > 0;
 
-            }
+                _db.UserInfo.Update(userInfo);
+                return _db.SaveChanges() > 0;
+
+            
         }
     }
 }

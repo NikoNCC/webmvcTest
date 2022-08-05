@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Dal/1.0.0": {
         "dependencies": {
-          "Entiy": "1.0.0"
+          "Entiy": "1.0.0",
+          "IDal": "1.0.0"
         },
         "runtime": {
           "Dal.dll": {}
@@ -1061,6 +1062,14 @@
         "runtime": {
           "Entiy.dll": {}
         }
+      },
+      "IDal/1.0.0": {
+        "dependencies": {
+          "Entiy": "1.0.0"
+        },
+        "runtime": {
+          "IDal.dll": {}
+        }
       }
     }
   },
@@ -1729,6 +1738,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Entiy/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IDal/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

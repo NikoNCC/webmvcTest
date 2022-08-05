@@ -1495,6 +1495,19 @@
         "runtime": {
           "bin/placeholder/Entiy.dll": {}
         }
+      },
+      "IDal/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Entiy": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/IDal.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/IDal.dll": {}
+        }
       }
     }
   },
@@ -5712,11 +5725,17 @@
       "type": "project",
       "path": "../Entiy/Entiy.csproj",
       "msbuildProject": "../Entiy/Entiy.csproj"
+    },
+    "IDal/1.0.0": {
+      "type": "project",
+      "path": "../IDal/IDal.csproj",
+      "msbuildProject": "../IDal/IDal.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Entiy >= 1.0.0"
+      "Entiy >= 1.0.0",
+      "IDal >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5748,6 +5767,9 @@
           "projectReferences": {
             "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj": {
               "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\Entiy\\Entiy.csproj"
+            },
+            "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj": {
+              "projectPath": "C:\\Users\\777\\Desktop\\.NetCore6Text\\StorehouseSys\\IDal\\IDal.csproj"
             }
           }
         }

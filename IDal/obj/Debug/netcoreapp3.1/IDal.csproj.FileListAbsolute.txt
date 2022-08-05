@@ -1,0 +1,13 @@
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\bin\Debug\netcoreapp3.1\IDal.deps.json
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\bin\Debug\netcoreapp3.1\IDal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\bin\Debug\netcoreapp3.1\IDal.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\bin\Debug\netcoreapp3.1\Entiy.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\bin\Debug\netcoreapp3.1\Entiy.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.csproj.AssemblyReference.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.AssemblyInfoInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.AssemblyInfo.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.csproj.CoreCompileInputs.cache
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.csproj.CopyComplete
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\IDal\obj\Debug\netcoreapp3.1\IDal.pdb

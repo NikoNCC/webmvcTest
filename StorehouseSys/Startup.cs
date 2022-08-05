@@ -1,5 +1,11 @@
+using Bll;
+using Dal;
+using Entiy;
+using IBLL;
+using IDal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +29,15 @@ namespace StorehouseSys
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
+            //×¢²áBLL
+            services.AddScoped<IUserInfoBLL, UserInfoBll>();
+            //×¢²áDal
+            services.AddScoped<IUserInfoDal, UserInfoDal>();
+
+          
+            services.AddDbContext<StorehouseSysDbContext>(options =>
+                                    options.UseSqlServer("name=ConnectionStrings:UseSqlServer"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,6 +46,7 @@ namespace StorehouseSys
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
@@ -41,12 +57,15 @@ namespace StorehouseSys
             app.UseRouting();
 
             app.UseAuthorization();
+            //×¢²ásession
+            app.UseSession();
 
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=LoginView}/{id?}");
             });
         }
     }
