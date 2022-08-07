@@ -31,6 +31,7 @@ namespace StorehouseSys.Controllers
         /// <returns></returns>
         public AjaxResult ChackData(UserInfoDtos userInfoDtos)
         {
+            
             if (string.IsNullOrEmpty(userInfoDtos.UserName))
             {
                 return new AjaxResult {
@@ -109,13 +110,10 @@ namespace StorehouseSys.Controllers
         [HttpGet]
         public IActionResult GetUserInfos(string UserName,int page,int limit)
         {
-            
-            var userInfos = _userInfoBLL.GetUserInfos();
-            int Count = userInfos.Count;
+            List<UserInfoDtos> userInfos = _userInfoBLL.GetUserInfos();          
             //判断用户是否删除
             userInfos = userInfos.Where(a => a.IsDelete == false).Skip((page - 1) * limit).Take(limit).ToList();
-            
-            
+            int Count = userInfos.Count;
             //查询用户名
             if (!string.IsNullOrEmpty(UserName))
             {
@@ -222,7 +220,7 @@ namespace StorehouseSys.Controllers
                 return Json(new AjaxResult
                 {
 
-                    Msg = "选中的用户不存在",
+                    Msg = "选中的用户不能为空",
 
                 });
             }

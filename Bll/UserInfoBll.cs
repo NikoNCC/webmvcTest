@@ -26,28 +26,7 @@ namespace Bll
         /// <returns></returns>
         public List<UserInfoDtos> GetUserInfos()
         {
-            List<UserInfo> userInfos = _userInfoDal.GetUserInfos().ToList();
-          List<UserInfoDtos> userInfoDtos = new List<UserInfoDtos>();
-            foreach (var i in userInfos)
-            {
-                userInfoDtos.Add(new UserInfoDtos
-                {
-                    IsDelete = i.IsDelete,
-                    Id = i.Id,
-                    DepartmentId = i.DepartmentId,
-                    Account = i.Account,
-                    Email = i.Email,
-                    CreateTime = i.CreateTime,
-                    PhoneNum = i.PhoneNum,
-                    IsAdmin = i.IsAdmin == true ? "是" : "否",
-                    PassWord = i.PassWord,
-                    Sex = i.Sex == 1 ? "男" : "女",
-                    UserName = i.UserName,
-                   
-                });
-              
-            }
-            return userInfoDtos;
+            return _userInfoDal.GetUserInfos().ToList();
         }
 
         /// <summary>
@@ -86,7 +65,7 @@ namespace Bll
         public bool AddUserInfos(UserInfoDtos userInfoDtos,out string msg)
         {
             string newpassword = Comm.MD5Str.MD5(userInfoDtos.PassWord);
-            UserInfo userInfos = _userInfoDal.GetUserInfos().FirstOrDefault(u => u.Account == userInfoDtos.Account);
+            UserInfoDtos userInfos = _userInfoDal.GetUserInfos().FirstOrDefault(u => u.Account == userInfoDtos.Account);
             //判断用户是否存在
            
             if (userInfos != null)
@@ -141,7 +120,7 @@ namespace Bll
                 DepartmentId = userInfo.DepartmentId,
                 PhoneNum = userInfo.PhoneNum,
                 IsAdmin = userInfo.IsAdmin == true ? "是" : "否",
-                CreateTime = userInfo.CreateTime
+                CreateTime = userInfo.CreateTime.ToString("yyyy-MM-dd HH-mm-ss"),
             };
             return userInfoDtos;
         }

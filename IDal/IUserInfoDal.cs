@@ -1,7 +1,9 @@
 ﻿using Entiy;
 using Microsoft.EntityFrameworkCore;
+using StorehouseSys.Models.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace IDal
@@ -12,7 +14,7 @@ namespace IDal
     public interface IUserInfoDal
     {
 
-        DbSet<UserInfo> GetUserInfos();
+        IQueryable<UserInfoDtos> GetUserInfos();
 
         bool AddUserInfos(UserInfo userInfo);
 

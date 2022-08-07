@@ -11,10 +11,10 @@ namespace Entiy
         {
         }
 
-        //public StorehouseSysDbContext()
-        //{ 
+        public StorehouseSysDbContext()
+        {
 
-        //}
+        }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder options)
         //{
@@ -23,5 +23,6 @@ namespace Entiy
 
 
         public DbSet<UserInfo> UserInfo { get; set; }
+        public DbSet<DepartmentInfo> DepartmentInfo { get; set; }
     }
 }

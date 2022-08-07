@@ -19,7 +19,7 @@ namespace StorehouseSys.Controllers
             _userInfoBLL = userInfoBLL;
         }
 
-        [LoginFiter]
+       
         public IActionResult LoginView()
         {
             return View();

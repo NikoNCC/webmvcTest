@@ -22,11 +22,28 @@ namespace Dal
         /// 用户数据
         /// </summary>
         /// <returns></returns>
-        public DbSet<UserInfo> GetUserInfos()
+        public IQueryable<UserInfoDtos> GetUserInfos()
         {
-           
+           IQueryable<UserInfoDtos> UserInfos = (from a in _db.UserInfo
+                       join b in _db.DepartmentInfo on a.DepartmentId equals b.Id
+                        select new UserInfoDtos
+                        {
+
+                           IsDelete = a.IsDelete,
+                           Id = a.Id,
+                           DepartmentId = a.DepartmentId,
+                           Account = a.Account,
+                           Email = a.Email,
+                           CreateTime = a.CreateTime.ToString("yyyy-MM-dd HH-mm-ss"),
+                           PhoneNum = a.PhoneNum,
+                           IsAdmin = a.IsAdmin == true ? "是" : "否",
+                           PassWord = a.PassWord,
+                           Sex = a.Sex == 1 ? "男" : "女",
+                           UserName = a.UserName,
+                           DepartmentName = b.DepartmentName
+                        });
             
-                return _db.UserInfo;
+                return UserInfos;
             
         }
 
@@ -37,8 +54,8 @@ namespace Dal
         /// <returns></returns>
         public bool AddUserInfos(UserInfo userInfo)
         {
-            
-                _db.UserInfo.Add(userInfo);
+
+            _db.UserInfo.Add(userInfo);
                 return _db.SaveChanges() > 0;
             
 
@@ -105,7 +122,7 @@ namespace Dal
         public bool UpdateUserInfo(UserInfo userInfo)
         {
 
-                _db.UserInfo.Update(userInfo);
+            _db.UserInfo.Update(userInfo);
                 return _db.SaveChanges() > 0;
 
             
