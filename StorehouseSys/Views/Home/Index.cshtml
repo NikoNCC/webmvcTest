@@ -63,10 +63,10 @@
                     <a href="javascript:;" id="UserName_a">admin</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                            <a href="javascript:;" layuimini-content-href="/Home/UpdateUserBaseView" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                            <a href="javascript:;" layuimini-content-href="/Home/UpdateUserPassWordView" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
                         </dd>
                         <dd>
                             <hr>
@@ -137,6 +137,7 @@
             miniTongji = layui.miniTongji;
             var UserName_a =sessionStorage.getItem("userName")
             $("#UserName_a").text(UserName_a);
+            
         var options = {
             
             iniUrl: "/layuimini/api/init.json", 
@@ -164,8 +165,16 @@
         });
 
         $('.login-out').on("click", function () {
-            layer.msg('退出登录成功', function () {
-                window.location = 'page/login-3.html';
+            console.log(123);
+            $.ajax({
+                url:"/Home/ExitLogin",
+                type:"post",
+                data: {},
+                success: function(res)
+                {
+                    window.location.href = "/Login/loginView";
+                }
+            
             });
         });
     });

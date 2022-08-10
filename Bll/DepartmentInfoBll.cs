@@ -47,15 +47,15 @@ namespace Bll
             return _departmentInfoDal.DalDepartment(iD);
         }
         /// <summary>
-        /// 获取用户数据
+        /// 获取部门数据
         /// </summary>
         /// <returns></returns>
-        public List<DepartmentInfoDtos> GetDepartment()
+        public IQueryable<DepartmentInfoDtos> GetDepartment()
         {
-            return _departmentInfoDal.GetDepartment().ToList(); 
+            return _departmentInfoDal.GetDepartment().Where(u=>!u.IsDelete); 
         }
         /// <summary>
-        /// 根据ID获取用户
+        /// 根据ID获取部门数据
         /// </summary>
         /// <param name="iD"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace Bll
             
         }
         /// <summary>
-        /// 修改功能
+        /// 修改部门功能
         /// </summary>
         /// <param name="departmentInfoDtos"></param>
         /// <returns></returns>

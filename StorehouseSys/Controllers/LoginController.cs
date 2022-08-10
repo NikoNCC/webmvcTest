@@ -19,12 +19,20 @@ namespace StorehouseSys.Controllers
             _userInfoBLL = userInfoBLL;
         }
 
-       
+       /// <summary>
+       /// 登录页面
+       /// </summary>
+       /// <returns></returns>
         public IActionResult LoginView()
         {
             return View();
         }
-
+        /// <summary>
+        /// 登录功能
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="passWord"></param>
+        /// <returns></returns>
         public IActionResult Login(string account, string passWord)
         {
             if (string.IsNullOrEmpty(account))
@@ -44,15 +52,20 @@ namespace StorehouseSys.Controllers
             }
             string msg;
             string userName;
-            bool result = _userInfoBLL.Login(account,passWord,out msg,out userName);
+            string Id;
+            bool result = _userInfoBLL.Login(account, passWord, out msg, out userName, out Id);
             if (result)
             {
                 HttpContext.Session.SetString("UserName", userName);
+                HttpContext.Session.SetString("Id", Id);
                 return Json(new AjaxResult
                 {
                     code = 200,
                     Msg = msg,
-                    Data= userName,
+                    Data= new {
+                        userName,
+                        Id
+                    },
                     Ses = true,
 
                 });
@@ -67,8 +80,6 @@ namespace StorehouseSys.Controllers
                 });
 
             }
-
-
         }
     }
 }

@@ -4,6 +4,7 @@ using Entiy.Dtos;
 using Entiy.Tools;
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
+using StorehouseSys.Models.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,9 +13,11 @@ namespace StorehouseSys.Controllers
     public class DepartmentController : Controller
     {
         IDepartmentInfoBll _departmentInfoBll;
-        public DepartmentController(IDepartmentInfoBll departmentInfoBll)
+        IUserInfoBLL _userInfoBLL;
+        public DepartmentController(IDepartmentInfoBll departmentInfoBll, IUserInfoBLL iUserInfoBll)
         {
             _departmentInfoBll = departmentInfoBll;
+            _userInfoBLL = iUserInfoBll;
         }
         /// <summary>
         /// 检查功能
@@ -64,20 +67,22 @@ namespace StorehouseSys.Controllers
         /// 获取部门数据
         /// </summary>
         /// <returns></returns>
+        /// <param departmentName="部门名字"></param>
         public IActionResult GetDepartment(string departmentName,int page, int limit)
         {
 
-            List<DepartmentInfoDtos> departmentInfoDtos = _departmentInfoBll.GetDepartment();
+            IQueryable<DepartmentInfoDtos> departmentInfoDtos = _departmentInfoBll.GetDepartment();
+
             if (departmentName!= null)
             {
-                departmentInfoDtos= departmentInfoDtos.Where(a => a.DepartmentName.Contains(departmentName)).ToList();
+                departmentInfoDtos= departmentInfoDtos.Where(a => a.DepartmentName.Contains(departmentName));
             }
-            //判断用户是否删除
-            departmentInfoDtos = departmentInfoDtos.Where(a => a.IsDelete == false).Skip((page - 1) * limit).Take(limit).ToList();
-            int Count = departmentInfoDtos.Count;
+            //判断部门是否删除
+           List<DepartmentInfoDtos> departmentInfos = departmentInfoDtos.Where(a => a.IsDelete == false).Skip((page - 1) * limit).Take(limit).ToList();
+            int Count = departmentInfos.Count;
             return Json(new
             {
-                Data = departmentInfoDtos,
+                Data = departmentInfos,
                 code = 0,
                 Msg = "部门数据",
                 count = Count,
@@ -111,7 +116,7 @@ namespace StorehouseSys.Controllers
         }
 
         /// <summary>
-        /// 修改用户
+        /// 修改部门
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
@@ -171,7 +176,7 @@ namespace StorehouseSys.Controllers
             });
         }
         /// <summary>
-        /// 添加功能
+        /// 添加部门功能
         /// </summary>
         /// <param name="departmentInfoDtos"></param>
         /// <returns></returns>
@@ -199,6 +204,35 @@ namespace StorehouseSys.Controllers
                 Msg = "添加失败",
 
             });
+        }
+        /// <summary>
+        /// 添加页面下拉框
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult GetUserInfo()
+        {
+
+            var UserName = _userInfoBLL.GetUserInfos().Where(a => a.IsAdmin=="是").Select(a => new
+            {
+                    Title= a.UserName,
+                    Value =a.Id,
+            }
+            ).ToList();
+           var DepartmentName = _departmentInfoBll.GetDepartment().Where(u => u.IsDelete == false).Select(u => new
+                {
+               Title =  u.DepartmentName,
+               Value =  u.Id,
+                }).ToList();
+
+            return Json(new AjaxResult
+            {
+                Msg = "下拉框数据",
+                Data = new {
+                    UserName,
+                    DepartmentName
+                },
+                Ses=true,
+            }) ;
         }
     }
 }

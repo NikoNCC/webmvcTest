@@ -180,7 +180,9 @@
                     success: function(res) {
                         if (res.ses) {
                             layer.msg(res.msg)
-                            sessionStorage.setItem("userName", res.data);
+                            sessionStorage.setItem("userName", res.data.userName);
+                            sessionStorage.setItem("id", res.data.id)
+                            
                             layer.msg('登录成功', function() {
                                 window.location = '/Home/index';
                             });

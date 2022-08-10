@@ -1,6 +1,7 @@
 ﻿using StorehouseSys.Models.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace IBLL
@@ -11,9 +12,9 @@ namespace IBLL
     public interface IUserInfoBLL
     {
 
-        List<UserInfoDtos> GetUserInfos();
+     List<UserInfoDtos> GetUserInfos();
 
-        bool Login(string account, string passWord, out string msg, out string userName);
+        bool Login(string account, string passWord, out string msg, out string userName,out string Id);
 
         bool AddUserInfos(UserInfoDtos userInfoDtos, out string msg);
 
@@ -22,7 +23,6 @@ namespace IBLL
         bool UpdateUserInfo(UserInfoDtos userInfoDtos);
 
         bool DelUserInfo(string[] iD);
-
-
+        bool UpdateUserPassWord(string old_password,string new_password,string userId,out string msg);
     }
 }

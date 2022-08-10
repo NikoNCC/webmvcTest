@@ -19,10 +19,13 @@ namespace StorehouseSys.Controllers
     public class HomeController : Controller
     {
         IUserInfoBLL _userInfoBLL;
+        IDepartmentInfoBll _departmentInfoBll;
+        
 
-        public HomeController(IUserInfoBLL userInfoBLL)
+        public HomeController(IUserInfoBLL userInfoBLL,IDepartmentInfoBll departmentInfoBll)
         {
             _userInfoBLL = userInfoBLL;
+            _departmentInfoBll = departmentInfoBll;
         }
 
         /// <summary>
@@ -67,6 +70,15 @@ namespace StorehouseSys.Controllers
                 };
 
             }
+            if (string.IsNullOrEmpty(userInfoDtos.DepartmentId))
+            {
+                return new AjaxResult
+                {
+
+                    Msg = "部门不能为空",
+
+                };
+            }
 
             return new AjaxResult {
                 
@@ -76,28 +88,51 @@ namespace StorehouseSys.Controllers
         }
 
         //-----------------------------页面----------------------------
-        //主页
+        /// <summary>
+        /// 主页
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
         }
-        //用户管理页面
+        /// <summary>
+        /// 用户管理页面
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Privacy()
         {
             return View();
         }
-        //添加页面
+        /// <summary>
+        /// 添加页面
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AddUserView()
         {
             return View();
         }
-        //修改页面
+        /// <summary>
+        /// 修改页面
+        /// </summary>
+        /// <returns></returns>
         public IActionResult UpdateUserView()
         {
             return View();
         }
-
-
+        /// <summary>
+        /// 用户修改密码页面
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult UpdateUserPassWordView()
+        {
+            return View(); 
+        }
+        //普通用户修改基本信息
+        public IActionResult UpdateUserBaseView()
+        {
+            return View();
+        }
 
 
 
@@ -283,6 +318,103 @@ namespace StorehouseSys.Controllers
             });
 
 
+        }
+
+        /// <summary>
+        /// 添加用户下拉框
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult GetDepartments()
+        {
+            var departmentInfoDtos = _departmentInfoBll.GetDepartment().Where(u => u.IsDelete == false).Select(u => new
+            {
+                u.DepartmentName,
+                u.Id,
+            }).ToList();
+
+            if (departmentInfoDtos.Count > 0)
+            {
+                return Json(new AjaxResult
+                {
+                    Ses = true,
+                    Msg = "下拉框数据",
+                    Data = departmentInfoDtos
+                }); ;
+            }
+            return Json(new AjaxResult
+            {
+                Msg = "部门数据不存在",
+
+            });
+        }
+
+        /// <summary>
+        /// 用户修改密码
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult UpdateUserPassWord(string old_password, string new_password, string again_password)
+        {
+            //验证数据
+           if(new_password != again_password)
+            {
+                return Json(new AjaxResult
+                {
+                    code = 400,
+                    Msg = "两次密码不一致",
+                    Ses = true
+                });
+            }
+           if(string.IsNullOrEmpty(old_password))
+            {
+                return Json(new AjaxResult
+                {
+                    code = 400,
+                    Msg = "旧密码不能为空",
+                    Ses = true
+
+                });
+            }
+            if (string.IsNullOrEmpty(new_password))
+            {
+                return Json(new AjaxResult
+                {
+                    code = 400,
+                    Msg = "新密码不能为空",
+                    Ses = true
+                });
+            }
+            string userId = HttpContext.Session.GetString("Id");
+            string msg;
+            bool result = _userInfoBLL.UpdateUserPassWord(old_password,new_password,userId,out msg);
+            if (result)
+            {
+                HttpContext.Session.Remove("UserName");
+                return Json(new AjaxResult
+                {
+                    code = 200,
+                    Msg = msg,
+                    Ses = true
+                });
+            }
+            return Json(new AjaxResult
+            {
+                code = 400,
+                Msg = msg,
+                Ses =true
+            });
+        }
+
+        /// <summary>
+        /// 退出登录
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult ExitLogin()
+        {
+            HttpContext.Session.Remove("UserName");
+            return Redirect("/Login/LoginView");
         }
     }
 }

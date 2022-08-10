@@ -393,3 +393,5 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Department\Index.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Department\UpdateDepartmentView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Department\AddDepartmentView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUserPassWordView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUserBaseView.cshtml.g.cs

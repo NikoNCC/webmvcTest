@@ -84,7 +84,7 @@
 
 
         var id = window.location.search.substr(4);
-         console.log(parent.layer.getFrameIndex(window.name));
+         //console.log(parent.layer.getFrameIndex(window.name));
           //发起异步请求
             $.ajax({
                 url: '/Home/GetUserInfoById',
@@ -120,34 +120,33 @@
 ``              
 
             $.ajax({
-                    
-                url:"/home/UpdateUserInfo",
-                type:"post",
-                data: data.field,
-                success : function (res)
-                { 
-                    if (res.ses) {
-                            //关闭当前编辑页
-                            var iframeIndex = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(iframeIndex);
-                            //刷新列表
-                            parent.table.reload('testReload', {
-                                page: {
-                                    curr: 1
-                                }
-                                , where: {
-                                }
-                            }, 'data');
 
-                        } else {
-                            layer.msg(res.msg);
-                        }
+                url: "/home/UpdateUserInfo",
+                type: "post",
+                data: data.field,
+                success: function(res) {
+                    if (res.ses) {
+                        //关闭当前编辑页
+                        var iframeIndex = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(iframeIndex);
+                        //刷新列表
+                        parent.table.reload('testReload', {
+                            page: {
+                                curr: 1
+                            }
+                            , where: {
+                            }
+                        }, 'data');
+
+                    } else {
+                        layer.msg(res.msg);
+                    }
 
 
 
                 }
-            
-            })
+
+            });
 
         });
 

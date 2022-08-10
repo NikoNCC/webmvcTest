@@ -24,5 +24,6 @@ namespace Entiy
 
         public DbSet<UserInfo> UserInfo { get; set; }
         public DbSet<DepartmentInfo> DepartmentInfo { get; set; }
+        public DbSet<RoleInfo> RoleInfo { get; set; }
     }
 }

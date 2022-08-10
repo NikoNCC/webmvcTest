@@ -105,34 +105,33 @@
 ``              
 
             $.ajax({
-                    
-                url:"/Department/UpdateDepartment",
-                type:"post",
-                data: data.field,
-                success : function (res)
-                { 
-                    if (res.ses) {
-                            //关闭当前编辑页
-                            var iframeIndex = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(iframeIndex);
-                            //刷新列表
-                            parent.table.reload('testReload', {
-                                page: {
-                                    curr: 1
-                                }
-                                , where: {
-                                }
-                            }, 'data');
 
-                        } else {
-                            layer.msg(res.msg);
-                        }
+                url: "/Department/UpdateDepartment",
+                type: "post",
+                data: data.field,
+                success: function(res) {
+                    if (res.ses) {
+                        //关闭当前编辑页
+                        var iframeIndex = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(iframeIndex);
+                        //刷新列表
+                        parent.table.reload('testReload', {
+                            page: {
+                                curr: 1
+                            }
+                            , where: {
+                            }
+                        }, 'data');
+
+                    } else {
+                        layer.msg(res.msg);
+                    }
 
 
 
                 }
-            
-            })
+
+            });
 
         });
 

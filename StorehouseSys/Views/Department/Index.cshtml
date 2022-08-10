@@ -73,8 +73,8 @@
                     { type: "checkbox", width: 50 },
                     { field: 'departmentName', title: '部门名称' },
                     { field: 'description', title: '部门描述', sort: true },
-                    { field: 'leaderId', title: '主管ID' },
-                    { field: 'parentId', title: '父部门ID', minWidth: 150 },
+                    { field: 'leaderName', title: '主管' },
+                    { field: 'parentName', title: '父部门', minWidth: 150 },
                     { field: 'createTime', title: 'CreateTime', sort: true },
                     { title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center" }
                 ]],
@@ -147,7 +147,7 @@
                                     layer.msg(res.msg)
                                 }
                             }
-                        })
+                        });
 
                     });
                 }
@@ -199,7 +199,7 @@
                                     layui.alert(res.msg)
                                 }
                             }
-                        })
+                        });
                         obj.del();
                         layer.close(index);
                     });

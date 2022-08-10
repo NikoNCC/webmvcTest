@@ -35,10 +35,11 @@ namespace Bll
         /// <param name="account"></param>
         /// <param name="passWord"></param>
         /// <returns></returns>
-        public bool Login(string account, string passWord,out string msg,out string userName)
+        public bool Login(string account, string passWord,out string msg,out string userName,out string Id)
         {
          UserInfo userInfo = _userInfoDal.Login(account);
             userName = null;
+            Id = null;
             if (userInfo == null)
             {
               msg = "账号不存在";
@@ -49,13 +50,12 @@ namespace Bll
             {
                 msg = "登录成功";
                 userName = userInfo.UserName;
+                Id = userInfo.Id;
                 return true;
             }
                 msg = "密码错误";
                 return false;
         }
-
-
 
         /// <summary>
         /// 添加用户
@@ -118,6 +118,7 @@ namespace Bll
                 Email = userInfo.Email,
                 Account = userInfo.Account,
                 DepartmentId = userInfo.DepartmentId,
+                PassWord = userInfo.PassWord,
                 PhoneNum = userInfo.PhoneNum,
                 IsAdmin = userInfo.IsAdmin == true ? "是" : "否",
                 CreateTime = userInfo.CreateTime.ToString("yyyy-MM-dd HH-mm-ss"),
@@ -132,19 +133,59 @@ namespace Bll
         /// <returns></returns>
         public bool UpdateUserInfo(UserInfoDtos userInfoDtos)
         {
+            //根据ID查询用户
             UserInfo userInfo = _userInfoDal.GetUserInfoById(userInfoDtos.Id);
             if (userInfo != null)
-            { 
+            {       //填写用户修改信息
                     userInfo.Id = userInfoDtos.Id;
-                    userInfo.Account =userInfoDtos.Account;
+                    userInfo.Account = userInfoDtos.Account;
                     userInfo.DepartmentId = userInfoDtos.DepartmentId;
                     userInfo.PhoneNum = userInfoDtos.PhoneNum;
                     userInfo.UserName = userInfoDtos.UserName;
-                    userInfo.Sex = userInfoDtos.Sex.Equals("男") ?  1 : 0;
+                    userInfo.Sex = userInfoDtos.Sex.Equals("男") ? 1 : 0;
                     userInfo.Email = userInfoDtos.Email;
-                    userInfo.CreateTime = DateTime.Now;
             }
             return _userInfoDal.UpdateUserInfo(userInfo);
+        }
+        /// <summary>
+        /// 更改用户密码
+        /// </summary>
+        /// <param name="old_password"></param>
+        /// <param name="new_password"></param>
+        /// <param name="userId"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public bool UpdateUserPassWord(string old_password, string new_password, string userId,out string msg)
+        {
+            //根据ID查找用户
+            UserInfo userInfo = _userInfoDal.GetUserInfoById(userId);
+            msg = null;
+            if (userInfo == null)
+            {
+                msg = "用户不存在";
+                return false;
+            }
+            //加密旧密码比对
+            string Md5old_password = Comm.MD5Str.MD5(old_password);
+            if (userInfo.PassWord != Md5old_password)
+            {
+                msg = "密码错误";
+                return false;
+
+            }
+            //加密新密码更改
+            string Md5new_password = Comm.MD5Str.MD5(new_password);
+            userInfo.PassWord = Md5new_password;
+           bool res = _userInfoDal.UpdateUserInfo(userInfo);
+            if (res)
+            {
+                msg = "修改密码成功";
+                return true;
+            }
+            else {
+                msg = "修改密码失败";
+                return false;
+            }
         }
     }
 }

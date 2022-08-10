@@ -54,20 +54,26 @@ namespace Dal
         /// <returns></returns>
         public IQueryable<DepartmentInfoDtos> GetDepartment()
         {
-            IQueryable<DepartmentInfoDtos> departmentInfoDtos = from a in _db.DepartmentInfo
+            IQueryable<DepartmentInfoDtos> departmentInfoDtos = from a in _db.DepartmentInfo.Where(a => !a.IsDelete).OrderByDescending(a => a.CreateTime)
+                                                                join b in _db.UserInfo on a.LeaderId equals b.Id
+                                                                into aa2 from temp in aa2.DefaultIfEmpty()
+                                                                join c in _db.DepartmentInfo.Where(c => !c.IsDelete)
+                                                                on a.ParentId equals c.Id
+                                                                into c2 from temp2 in c2.DefaultIfEmpty()
                                                                 select new DepartmentInfoDtos
                                                                 {
                                                 Id = a.Id,
                                                 LeaderId = a.LeaderId,
+                                                LeaderName = temp.UserName,
                                                 ParentId = a.ParentId,
+                                                ParentName =temp2.DepartmentName,
                                                 DepartmentName = a.DepartmentName,
                                                 IsDelete = a.IsDelete,
                                                 CreateTime = a.CreateTime.ToString("yyyy-MM-dd HH-mm-ss"),
                                                 DeleteTime = a.DeleteTime.ToString("yyyy-MM-dd HH-mm-ss"),
                                                 Description = a.Description,
-                                                                };
-
-             return departmentInfoDtos;
+         };
+            return departmentInfoDtos;
         }
 
         /// <summary>

@@ -23,9 +23,18 @@ namespace Entiy.Dtos
         /// </summary>
         public string LeaderId { get; set; }
         /// <summary>
+        /// 主管名字
+        /// </summary>
+        public string LeaderName { get; set; }
+        /// <summary>
         /// 父部门ID
         /// </summary>
         public string ParentId { get; set; }
+        /// <summary>
+        /// 父部门名字
+        /// </summary>
+        public string ParentName { get; set; }
+
         /// <summary>
         /// 创建时间
         /// </summary>
