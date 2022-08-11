@@ -14,6 +14,7 @@ namespace IBLL
 
      List<UserInfoDtos> GetUserInfos();
 
+
         bool Login(string account, string passWord, out string msg, out string userName,out string Id);
 
         bool AddUserInfos(UserInfoDtos userInfoDtos, out string msg);

@@ -384,7 +384,6 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUserView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Comm.dll
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\Comm.pdb
-C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Login\LoginView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\IBLL.dll
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\IBLL.pdb
@@ -395,3 +394,6 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Department\AddDepartmentView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUserPassWordView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateUserBaseView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\RoleInfo\Index.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\RoleInfo\AddRoleInfoView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\RoleInfo\UpdateRoleInfoView.cshtml.g.cs

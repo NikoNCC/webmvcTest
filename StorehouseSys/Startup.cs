@@ -31,14 +31,19 @@ namespace StorehouseSys
         {
             services.AddControllersWithViews();
             services.AddSession();
-            //注册UserInfoBLL
+            //注册UserInfoBLL 用户
             services.AddScoped<IUserInfoBLL, UserInfoBll>();
             //注册UserInfoDal
             services.AddScoped<IUserInfoDal, UserInfoDal>();
-            //DepartmentInfoBll
+            //DepartmentInfoBll 部门
             services.AddScoped<IDepartmentInfoBll, DepartmentInfoBll>();
             //DepartmentInfoDal
             services.AddScoped<IDepartmentInfoDal, DepartmentInfoDal>();
+            //注册IRoleInfoBll
+            services.AddScoped<IRoleInfoBll, RoleInfoBll>();
+            //注册IRoleInfoDal 角色表
+            services.AddScoped<IRoleInfoDal, RoleInfoDal>();
+
             //注册数据库上下文
             services.AddDbContext<StorehouseSysDbContext>(options =>
                                     options.UseSqlServer("name=ConnectionStrings:UseSqlServer"));

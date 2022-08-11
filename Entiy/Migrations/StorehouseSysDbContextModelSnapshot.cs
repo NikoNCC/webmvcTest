@@ -50,6 +50,25 @@ namespace Entiy.Migrations
                     b.ToTable("DepartmentInfo");
                 });
 
+            modelBuilder.Entity("Entiy.R_UserInfo_RoleInfo", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("varchar(36)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("R_UserInfo_RoleInfo");
+                });
+
             modelBuilder.Entity("Entiy.RoleInfo", b =>
                 {
                     b.Property<string>("Id")
