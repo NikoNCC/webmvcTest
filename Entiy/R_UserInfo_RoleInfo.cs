@@ -5,14 +5,9 @@ using System.Text;
 
 namespace Entiy
 {
-    public class R_UserInfo_RoleInfo
+    public class R_UserInfo_RoleInfo : EntityBase
     {
-        /// <summary>
-        /// 主键ID
-        /// </summary>
-        [Column(TypeName = "varchar(36)")]
-        public string Id
-        {get; set; }
+
         /// <summary>
         /// 用户ID
         /// </summary>

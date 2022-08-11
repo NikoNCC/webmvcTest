@@ -6,13 +6,9 @@ namespace Entiy
     /// <summary>
     /// 用户实体类
     /// </summary>
-    public class UserInfo
+    public class UserInfo:DelEntity
     {
-        /// <summary>
-        /// 主键ID
-        /// </summary>
-        [Column(TypeName = "varchar(36)")]
-        public string Id { get; set; }
+       
         /// <summary>
         /// 账号
         /// </summary>
@@ -55,13 +51,6 @@ namespace Entiy
         /// 创建时间
         /// </summary>
         public  DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 是否删除
-        /// </summary>
-        public bool IsDelete { get; set; }
-        /// <summary>
-        /// 删除时间
-        /// </summary>
-        public DateTime DeleteTime { get; set; }
+     
     }
 }

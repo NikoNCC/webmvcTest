@@ -8,13 +8,9 @@ namespace Entiy
     /// 部门实体表
     /// </summary>
      
-    public class DepartmentInfo
+    public class DepartmentInfo : DelEntity
     {
-        /// <summary>
-        /// 主键ID
-        /// </summary>
-        [Column(TypeName = "varchar(36)")]
-        public string Id { get; set; }
+          
         /// <summary>
         /// 部门描述
         /// </summary>
@@ -39,15 +35,7 @@ namespace Entiy
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 是否删除
-        /// </summary>
-        public bool IsDelete { get; set; }
-        /// <summary>
-        /// 删除时间
-        /// </summary>
-        public DateTime DeleteTime { get; set; }
-
+      
 
     }
 }

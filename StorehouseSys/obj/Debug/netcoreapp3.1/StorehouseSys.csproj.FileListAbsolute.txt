@@ -397,3 +397,4 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\RoleInfo\Index.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\RoleInfo\AddRoleInfoView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\RoleInfo\UpdateRoleInfoView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.MvcApplicationPartsAssemblyInfo.cs

@@ -39,9 +39,9 @@ namespace StorehouseSys
             services.AddScoped<IDepartmentInfoBll, DepartmentInfoBll>();
             //DepartmentInfoDal
             services.AddScoped<IDepartmentInfoDal, DepartmentInfoDal>();
-            //注册IRoleInfoBll
+            //注册IRoleInfoBll 角色表
             services.AddScoped<IRoleInfoBll, RoleInfoBll>();
-            //注册IRoleInfoDal 角色表
+            //注册IRoleInfoDal 
             services.AddScoped<IRoleInfoDal, RoleInfoDal>();
 
             //注册数据库上下文
