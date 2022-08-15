@@ -7,10 +7,10 @@ namespace Entiy
 {
     public class R_UserInfo_RoleInfo : EntityBase
     {
-
+        
         /// <summary>
         /// 用户ID
-        /// </summary>
+        /// </summary>//
         [Column(TypeName = "varchar(36)")]
         public string UserId
         {get; set; }
