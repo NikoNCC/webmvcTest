@@ -11,9 +11,11 @@ namespace StorehouseSys.Controllers
     public class RoleInfoController : Controller
     {
         IRoleInfoBll _IRoleInfoBll;
-        public RoleInfoController(IRoleInfoBll iRoleInfoBll)
+        IR_UserInfo_RoleInfoBll _IR_UserInfo_RoleInfoBll;
+        public RoleInfoController(IRoleInfoBll iRoleInfoBll, IR_UserInfo_RoleInfoBll iR_UserInfo_RoleInfoBll)
         {
             _IRoleInfoBll = iRoleInfoBll;
+            _IR_UserInfo_RoleInfoBll = iR_UserInfo_RoleInfoBll;
         }
 
         /// <summary>
@@ -33,11 +35,29 @@ namespace StorehouseSys.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// 角色修改页面
+        /// </summary>
+        /// <returns></returns>
         public IActionResult UpdateRoleInfoView()
         {
             return View();
         }
+
+        /// <summary>
+        /// 添加角色绑定
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult AddUserInfo_RoleInfoView()
+        {
+            return View();
+        }
+
+
+
+
+        //--------------------------------------------功能-------------------------------
+
 
         /// <summary>
         /// 获取角色表数据
@@ -184,6 +204,12 @@ namespace StorehouseSys.Controllers
 
 
             }); 
+        }
+
+
+        public IActionResult GetUser_Role() {
+              _IR_UserInfo_RoleInfoBll.GetRoleInfo();
+            return null;
         }
     }
     

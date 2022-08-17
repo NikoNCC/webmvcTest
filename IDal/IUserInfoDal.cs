@@ -11,20 +11,20 @@ namespace IDal
     /// <summary>
     /// UserInfoDal接口
     /// </summary>
-    public interface IUserInfoDal
+    public interface IUserInfoDal:IBaseDal<UserInfo>
     {
 
-        IQueryable<UserInfoDtos> GetUserInfos();
+        //IQueryable<UserInfoDtos> GetUserInfos();
 
-        bool AddUserInfos(UserInfo userInfo);
+        //bool AddUserInfos(UserInfo userInfo);
 
         bool DelUserInfo(string[] iD);
 
         UserInfo Login(string account);
 
-        UserInfo GetUserInfoById(string id);
+        //UserInfo GetUserInfoById(string id);
 
-        bool UpdateUserInfo(UserInfo userInfo);
+        //bool UpdateUserInfo(UserInfo userInfo);
 
     }
 }

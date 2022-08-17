@@ -44,6 +44,7 @@
 
             <script type="text/html" id="currentTableBar">
                 <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="AddRole">添加用户</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             </script>
 
@@ -56,7 +57,7 @@
 
         var table;
         layui.use(['form', 'table'], function() {
-           var $ = layui.jquery,
+            var $ = layui.jquery,
                 form = layui.form;
             table = layui.table;
 
@@ -203,6 +204,24 @@
                         obj.del();
                         layer.close(index);
                     });
+                }else if (obj.event === 'AddRole') {
+                  var index = layer.open({
+                        title: '添加用户',
+                        type: 2,
+                        shade: 0.2,
+                        maxmin: true,
+                        shadeClose: true,
+                        area: ['100%', '100%'],
+                        content: '/RoleInfo/AddUserInfo_RoleInfoView?id=' + data.id,
+                    });
+                    $(window).on("resize", function() {
+                        layer.full(index);
+                    });
+                    return false;
+                        
+                        obj.del();
+                        layer.close(index);
+                   
                 }
             });
 

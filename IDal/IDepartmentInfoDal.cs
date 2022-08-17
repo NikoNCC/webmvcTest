@@ -8,12 +8,12 @@ using System.Text;
 
 namespace IDal
 {
-    public interface IDepartmentInfoDal
+    public interface IDepartmentInfoDal:IBaseDal<DepartmentInfo>
     {
-        IQueryable<DepartmentInfoDtos>  GetDepartment();
+        //IQueryable<DepartmentInfoDtos>  GetDepartment();
         bool DalDepartment(string[] iD);
-        DepartmentInfo GetDepartmentById(string iD);
-        bool UpdateDepartment(DepartmentInfo departmentInfo);
-        bool AddDepartment(DepartmentInfo departmentInfo);
+        //DepartmentInfo GetDepartmentById(string iD);
+        //bool UpdateDepartment(DepartmentInfo departmentInfo);
+        //bool AddDepartment(DepartmentInfo departmentInfo);
     }
 }

@@ -11,11 +11,12 @@ namespace Bll
 {
     public class DepartmentInfoBll : IDepartmentInfoBll
     {
+        IUserInfoDal _userInfoDal;
         IDepartmentInfoDal _departmentInfoDal;
-
-        public DepartmentInfoBll(IDepartmentInfoDal departmentInfoDal)
+        public DepartmentInfoBll(IUserInfoDal userInfoDal, IDepartmentInfoDal DepartmentInfoDal)
         {
-            _departmentInfoDal = departmentInfoDal;
+            _userInfoDal = userInfoDal;
+            _departmentInfoDal = DepartmentInfoDal;
         }
         /// <summary>
         /// 添加功能
@@ -34,7 +35,7 @@ namespace Bll
                 ParentId = departmentInfoDtos.ParentId,
                 Description = departmentInfoDtos.Description,
             };
-            return _departmentInfoDal.AddDepartment(departmentInfo);
+            return _departmentInfoDal.AddEntity(departmentInfo);
         }
 
         /// <summary>
@@ -52,7 +53,28 @@ namespace Bll
         /// <returns></returns>
         public IQueryable<DepartmentInfoDtos> GetDepartment()
         {
-            return _departmentInfoDal.GetDepartment().Where(u=>!u.IsDelete); 
+            var list = from a in _departmentInfoDal.GetEntity().Where(a => !a.IsDelete).OrderByDescending(a => a.CreateTime)
+                       join b in _userInfoDal.GetEntity() on a.LeaderId equals b.Id
+                       into aa2
+                       from temp in aa2.DefaultIfEmpty()
+                       join c in _departmentInfoDal.GetEntity().Where(c => !c.IsDelete)
+                       on a.ParentId equals c.Id
+                       into c2
+                       from temp2 in c2.DefaultIfEmpty()
+                       select new DepartmentInfoDtos
+                       {
+                           Id = a.Id,
+                           LeaderId = a.LeaderId,
+                           LeaderName = temp.UserName,
+                           ParentId = a.ParentId,
+                           ParentName = temp2.DepartmentName,
+                           DepartmentName = a.DepartmentName,
+                           IsDelete = a.IsDelete,
+                           CreateTime = a.CreateTime.ToString("yyyy-MM-dd HH-mm-ss"),
+                           DeleteTime = a.DeleteTime.ToString("yyyy-MM-dd HH-mm-ss"),
+                           Description = a.Description,
+                       };
+            return list;
         }
         /// <summary>
         /// 根据ID获取部门数据
@@ -62,7 +84,7 @@ namespace Bll
         /// <exception cref="NotImplementedException"></exception>
         public DepartmentInfoDtos GetDepartmentById(string iD)
         {
-            DepartmentInfo department = _departmentInfoDal.GetDepartmentById(iD);
+            DepartmentInfo department = _departmentInfoDal.FindEntity(iD);
             if (department != null)
              {
                 DepartmentInfoDtos departmentInfoDtos = new DepartmentInfoDtos()
@@ -93,7 +115,7 @@ namespace Bll
                         Id = departmentInfoDtos.Id
 
             };
-           return _departmentInfoDal.UpdateDepartment(departmentInfo);
+           return _departmentInfoDal.UpdateEntiry(departmentInfo);
         }
     }
 }

@@ -13,11 +13,12 @@ namespace Bll
     {
 
         IUserInfoDal _userInfoDal;
-
-        public UserInfoBll(IUserInfoDal userInfoDal)
+        IDepartmentInfoDal _departmentInfoDal;
+        public UserInfoBll(IUserInfoDal userInfoDal, IDepartmentInfoDal departmentInfoDal)
         {
             _userInfoDal = userInfoDal;
-        }
+            _departmentInfoDal=departmentInfoDal;
+    }
 
 
         /// <summary>
@@ -26,7 +27,22 @@ namespace Bll
         /// <returns></returns>
         public List<UserInfoDtos> GetUserInfos()
         {
-            return _userInfoDal.GetUserInfos().ToList();
+            var list = from a in _userInfoDal.GetEntity().Where(a => !a.IsDelete).OrderByDescending(a => a.CreateTime)
+                       join b in _departmentInfoDal.GetEntity().Where(a => !a.IsDelete)
+                       on a.DepartmentId equals b.Id
+                       select new UserInfoDtos
+                       {
+                            Account= a.Account,
+                            CreateTime = a.CreateTime.ToShortTimeString(),
+                            DepartmentName =b.DepartmentName,
+                            Email =a.Email,
+                            Id =a.Id,
+                            PhoneNum =a.PhoneNum,
+                            Sex = a.Sex  ==1 ?"男":"女",
+                            UserName =a.UserName,
+                            IsAdmin = a.IsAdmin ==true? "YES":"NO",
+                       };
+            return list.ToList();
         }
 
         /// <summary>
@@ -65,7 +81,7 @@ namespace Bll
         public bool AddUserInfos(UserInfoDtos userInfoDtos,out string msg)
         {
             string newpassword = Comm.MD5Str.MD5(userInfoDtos.PassWord);
-            UserInfoDtos userInfos = _userInfoDal.GetUserInfos().FirstOrDefault(u => u.Account == userInfoDtos.Account);
+            UserInfo userInfos = _userInfoDal.GetEntity().FirstOrDefault(u => u.Account == userInfoDtos.Account);
             //判断用户是否存在
            
             if (userInfos != null)
@@ -88,7 +104,7 @@ namespace Bll
                 IsAdmin = userInfoDtos.IsAdmin == "是" ? true : false,
             };
             msg = "添加成功";
-            return _userInfoDal.AddUserInfos(userInfo);
+            return _userInfoDal.AddEntity(userInfo);
         }
         /// <summary>
         /// 删除用户
@@ -108,7 +124,7 @@ namespace Bll
         /// <returns></returns>
         public UserInfoDtos GetUserInfoById(string id)
         {
-            UserInfo userInfo = _userInfoDal.GetUserInfoById(id);
+            UserInfo userInfo = _userInfoDal.FindEntity(id);
 
             UserInfoDtos userInfoDtos = new UserInfoDtos()
             {
@@ -134,7 +150,7 @@ namespace Bll
         public bool UpdateUserInfo(UserInfoDtos userInfoDtos)
         {
             //根据ID查询用户
-            UserInfo userInfo = _userInfoDal.GetUserInfoById(userInfoDtos.Id);
+            UserInfo userInfo = _userInfoDal.FindEntity(userInfoDtos.Id);
             if (userInfo != null)
             {       //填写用户修改信息
                     userInfo.Id = userInfoDtos.Id;
@@ -145,7 +161,7 @@ namespace Bll
                     userInfo.Sex = userInfoDtos.Sex.Equals("男") ? 1 : 0;
                     userInfo.Email = userInfoDtos.Email;
             }
-            return _userInfoDal.UpdateUserInfo(userInfo);
+            return _userInfoDal.UpdateEntiry(userInfo);
         }
         /// <summary>
         /// 更改用户密码
@@ -158,7 +174,7 @@ namespace Bll
         public bool UpdateUserPassWord(string old_password, string new_password, string userId,out string msg)
         {
             //根据ID查找用户
-            UserInfo userInfo = _userInfoDal.GetUserInfoById(userId);
+            UserInfo userInfo = _userInfoDal.FindEntity(userId);
             msg = null;
             if (userInfo == null)
             {
@@ -176,7 +192,7 @@ namespace Bll
             //加密新密码更改
             string Md5new_password = Comm.MD5Str.MD5(new_password);
             userInfo.PassWord = Md5new_password;
-           bool res = _userInfoDal.UpdateUserInfo(userInfo);
+           bool res = _userInfoDal.UpdateEntiry(userInfo);
             if (res)
             {
                 msg = "修改密码成功";

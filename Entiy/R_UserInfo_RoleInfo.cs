@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entiy
 {
-    public class R_UserInfo_RoleInfo : EntityBase
+    public class R_UserInfo_RoleInfo : DelEntity
     {
 
         /// <summary>

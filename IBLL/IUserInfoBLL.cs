@@ -12,7 +12,7 @@ namespace IBLL
     public interface IUserInfoBLL
     {
 
-     List<UserInfoDtos> GetUserInfos();
+        List<UserInfoDtos> GetUserInfos();
 
 
         bool Login(string account, string passWord, out string msg, out string userName,out string Id);

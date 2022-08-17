@@ -7,7 +7,7 @@ namespace Entiy
     /// <summary>
     /// 含有删除字段实体类
     /// </summary>
-    public class DelEntity:EntityBase
+    public class DelEntity:BaseEntity
     {
         /// <summary>
         /// 是否删除

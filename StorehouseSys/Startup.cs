@@ -43,7 +43,10 @@ namespace StorehouseSys
             services.AddScoped<IRoleInfoBll, RoleInfoBll>();
             //注册IRoleInfoDal 
             services.AddScoped<IRoleInfoDal, RoleInfoDal>();
-
+            //注册角色绑定表BLL
+            services.AddScoped<IR_UserInfo_RoleInfoBll, R_UserInfo_RoleInfoBll>();
+            //注册角色绑定表DAL
+            services.AddScoped < IR_UserInfo_RoleInfoDal, R_UserInfo_RoleInfoDal>();
             //注册数据库上下文
             services.AddDbContext<StorehouseSysDbContext>(options =>
                                     options.UseSqlServer("name=ConnectionStrings:UseSqlServer"));
