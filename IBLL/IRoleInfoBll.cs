@@ -7,6 +7,9 @@ using System.Text;
 
 namespace IBLL
 {
+    /// <summary>
+    /// 角色管理Bll接口
+    /// </summary>
     public interface IRoleInfoBll
     {
         IQueryable<RoleInfoDtos> GetRoleInfo();

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Dal
 {
-    public class UserInfoDal:BaseDal<UserInfo> ,IUserInfoDal
+    public class UserInfoDal:BaseDeleteDal<UserInfo> ,IUserInfoDal
     {
         private StorehouseSysDbContext _db;
 
@@ -69,29 +69,29 @@ namespace Dal
         /// </summary>
         /// <param name="iD"></param>
         /// <returns></returns>
-        public bool DelUserInfo(string[] iD)
-        {
+        //public bool DelUserInfo(string[] iD)
+        //{
 
-            List<UserInfo> userInfolist = new List<UserInfo>();
-            foreach (var i in iD)
-            {
-                UserInfo userInfos = _db.UserInfo.Find(i);
-                if (userInfos == null)
-                {
-                    return false;
-                }
-                if (userInfos.IsDelete)
-                {
-                    return false;
-                }
-                userInfos.IsDelete = true;
-                userInfos.DeleteTime = DateTime.Now;
-                userInfolist.Add(userInfos);
-            }
-            _db.UserInfo.UpdateRange(userInfolist);
-            return _db.SaveChanges() > 0;
+        //    List<UserInfo> userInfolist = new List<UserInfo>();
+        //    foreach (var i in iD)
+        //    {
+        //        UserInfo userInfos = _db.UserInfo.Find(i);
+        //        if (userInfos == null)
+        //        {
+        //            return false;
+        //        }
+        //        if (userInfos.IsDelete)
+        //        {
+        //            return false;
+        //        }
+        //        userInfos.IsDelete = true;
+        //        userInfos.DeleteTime = DateTime.Now;
+        //        userInfolist.Add(userInfos);
+        //    }
+        //    _db.UserInfo.UpdateRange(userInfolist);
+        //    return _db.SaveChanges() > 0;
 
-        }
+        //}
 
         /// <summary>
         /// 登录功能

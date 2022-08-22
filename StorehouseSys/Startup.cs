@@ -46,7 +46,12 @@ namespace StorehouseSys
             //注册角色绑定表BLL
             services.AddScoped<IR_UserInfo_RoleInfoBll, R_UserInfo_RoleInfoBll>();
             //注册角色绑定表DAL
-            services.AddScoped < IR_UserInfo_RoleInfoDal, R_UserInfo_RoleInfoDal>();
+            services.AddScoped <IR_UserInfo_RoleInfoDal, R_UserInfo_RoleInfoDal>();
+            //菜单管理Dal
+            services.AddScoped<IMenuInfoDal, MenuInfoDal>();
+            //菜单管理bll
+            services.AddScoped<IMenuInfoBll, MenuInfoBll>();
+
             //注册数据库上下文
             services.AddDbContext<StorehouseSysDbContext>(options =>
                                     options.UseSqlServer("name=ConnectionStrings:UseSqlServer"));

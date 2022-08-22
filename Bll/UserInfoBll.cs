@@ -30,11 +30,12 @@ namespace Bll
             var list = from a in _userInfoDal.GetEntity().Where(a => !a.IsDelete).OrderByDescending(a => a.CreateTime)
                        join b in _departmentInfoDal.GetEntity().Where(a => !a.IsDelete)
                        on a.DepartmentId equals b.Id
+                       into aa from aa2 in aa.DefaultIfEmpty()
                        select new UserInfoDtos
                        {
                             Account= a.Account,
                             CreateTime = a.CreateTime.ToShortTimeString(),
-                            DepartmentName =b.DepartmentName,
+                            DepartmentName =aa2.DepartmentName,
                             Email =a.Email,
                             Id =a.Id,
                             PhoneNum =a.PhoneNum,
@@ -111,10 +112,36 @@ namespace Bll
         /// </summary>
         /// <param name="iD"></param>
         /// <returns></returns>
-        public bool DelUserInfo(string[] iD)
+        public bool DelUserInfo(string[] Id,out string msg)
         {
-               
-                return _userInfoDal.DelUserInfo(iD);
+            msg = null;
+            List<UserInfo> userInfos = new List<UserInfo>();
+            foreach (var i in Id)
+            {
+                UserInfo userInfo =_userInfoDal.FindEntity(i);
+                if (userInfo == null)
+                {
+                    msg = "选中的用户不存在";
+                    return false;
+                        
+                }
+                userInfo.IsDelete = true;
+                userInfo.DeleteTime = DateTime.Now;
+                userInfos.Add(userInfo);
+            }
+          bool res =  _userInfoDal.DelEntity(userInfos);
+            if(res)
+            {
+                msg = "删除成功";
+                return res;
+
+            }
+            else
+            {
+
+                msg = "删除失败";
+                return res;
+            }
         }
 
         /// <summary>
@@ -122,9 +149,9 @@ namespace Bll
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public UserInfoDtos GetUserInfoById(string id)
+        public UserInfoDtos GetUserInfoById(string Id)
         {
-            UserInfo userInfo = _userInfoDal.FindEntity(id);
+            UserInfo userInfo = _userInfoDal.FindEntity(Id);
 
             UserInfoDtos userInfoDtos = new UserInfoDtos()
             {

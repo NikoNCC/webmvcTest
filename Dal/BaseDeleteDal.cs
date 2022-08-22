@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Dal
 {
-    public class BaseDeleteDal<T> : BaseDal<T> where T : DelEntity
+    public class BaseDeleteDal<T> : BaseDal<T>, IBaseDeleteDal<T> where T : DelEntity
     {
         StorehouseSysDbContext _dbContext;
         public BaseDeleteDal(StorehouseSysDbContext dbContext) : base(dbContext)
@@ -18,12 +18,12 @@ namespace Dal
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public bool DelEntity(string Id)
+        public bool DelEntity(List<T> list)
         {
-            T entity = _dbContext.Set<T>().Find(Id);
-            entity.IsDelete = true;
-            _dbContext.Set<T>().Update(entity);
+
+            _dbContext.Set<T>().UpdateRange(list);
             return _dbContext.SaveChanges() > 0;
         }
+   
     }
 }

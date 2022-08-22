@@ -54,10 +54,26 @@ namespace Dal
         {
             return _storehouseSysDbContext.Set<T>();
         }
-
+        /// <summary>
+        /// 改
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public bool UpdateEntiry(T entity)
         {
             _storehouseSysDbContext.Set<T>().Update(entity);
+            return _storehouseSysDbContext.SaveChanges() > 0;
+        }
+
+
+        /// <summary>
+        /// 批量添加
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool AddEntityRange(List<T> entity)
+        {
+            _storehouseSysDbContext.Set<T>().AddRange(entity);
             return _storehouseSysDbContext.SaveChanges() > 0;
         }
     }

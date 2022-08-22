@@ -219,14 +219,14 @@ namespace StorehouseSys.Controllers
                    
                 });
             }
-           
-            bool result = _userInfoBLL.DelUserInfo(IdList);
+            string msg;
+            bool result = _userInfoBLL.DelUserInfo(IdList,out msg);
             if (result)
             {
                 return Json(new AjaxResult
                 {
                     code = 0,
-                    Msg = "删除成功",
+                    Msg = msg,
                     Ses = true,
                 });
 
@@ -234,7 +234,7 @@ namespace StorehouseSys.Controllers
                 return Json(new AjaxResult
                 {
                     code = 500,
-                    Msg = "删除失败",
+                    Msg = msg,
                     
                 });
         }

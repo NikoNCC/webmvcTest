@@ -19,11 +19,11 @@ namespace IBLL
 
         bool AddUserInfos(UserInfoDtos userInfoDtos, out string msg);
 
-        UserInfoDtos GetUserInfoById(string id);
+        UserInfoDtos GetUserInfoById(string Id);
 
         bool UpdateUserInfo(UserInfoDtos userInfoDtos);
 
-        bool DelUserInfo(string[] iD);
+        bool DelUserInfo(string[] Id,out string msg);
         bool UpdateUserPassWord(string old_password,string new_password,string userId,out string msg);
     }
 }

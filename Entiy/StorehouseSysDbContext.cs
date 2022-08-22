@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,5 +27,21 @@ namespace Entiy
         public DbSet<DepartmentInfo> DepartmentInfo { get; set; }
         public DbSet<RoleInfo> RoleInfo { get; set; }
         public DbSet<R_UserInfo_RoleInfo> R_UserInfo_RoleInfo { get; set; }
+        public DbSet<MenuInfo> MenuInfo { get; set; }
+        /// <summary>
+        /// 类别数据集
+        /// </summary>
+        public DbSet<Category> Category { get; set; }
+
+        /// <summary>
+        /// 耗材数据集
+        /// </summary>
+        public DbSet<ConsumableInfo> ConsumableInfo { get; set; }
+
+        /// <summary>
+        /// 耗材记录数据集
+        /// </summary>
+        public DbSet<ConsumableRecord> ConsumableRecord { get; set; }
+        public DbSet<R_RoleInfo_MenuInfo> R_RoleInfo_MenuInfo { get; set; }
     }
 }

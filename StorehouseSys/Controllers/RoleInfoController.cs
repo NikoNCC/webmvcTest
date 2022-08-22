@@ -9,7 +9,10 @@ using System.Linq;
 namespace StorehouseSys.Controllers
 {
     public class RoleInfoController : Controller
-    {
+    {  
+        /// <summary>
+        /// 引用
+        /// </summary>
         IRoleInfoBll _IRoleInfoBll;
         IR_UserInfo_RoleInfoBll _IR_UserInfo_RoleInfoBll;
         public RoleInfoController(IRoleInfoBll iRoleInfoBll, IR_UserInfo_RoleInfoBll iR_UserInfo_RoleInfoBll)
@@ -206,11 +209,75 @@ namespace StorehouseSys.Controllers
             }); 
         }
 
+        /// <summary>
+        /// 获取用户数据
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [HttpGet]
+        public IActionResult GetUser_Role(string roleId) {
+            var options =  _IR_UserInfo_RoleInfoBll.GetUserInfoDtos().Select(a => new {
 
-        public IActionResult GetUser_Role() {
-              _IR_UserInfo_RoleInfoBll.GetRoleInfo();
-            return null;
+                Title = a.UserName,
+                value = a.Id
+            });
+
+            List<string> userIds = _IR_UserInfo_RoleInfoBll.GetBindUserInfo(roleId).ToList();
+          
+           return Json( new  AjaxResult{
+                     code =0,
+                     Ses  =true,
+                     Data =new{
+                         userIds,
+                         options
+                     },
+                     Msg = "用户数据"
+           });        }
+
+        /// <summary>
+        /// 添加角色绑定
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult AddRoleInfo(string roleId, string[] userId ){
+
+            if (userId == null) {
+                return Json(new AjaxResult
+                {
+                   
+                 
+                    Msg = "用户名不能为空"
+
+                });
+
+            }
+
+            string msg;
+            bool res =  _IR_UserInfo_RoleInfoBll.AddRoleInfo(roleId, userId,out msg);
+
+            if (res)
+            {
+                return Json(new AjaxResult
+                {
+                    code = 0,
+                    Ses = res,
+                    Msg = msg
+
+                });
+            }
+            return Json(new AjaxResult
+            {
+             
+                Msg = msg
+
+            });
         }
+
+
+
+
     }
     
 }

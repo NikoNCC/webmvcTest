@@ -1,4 +1,6 @@
-﻿using Entiy.Dtos;
+﻿using Dal;
+using Entiy;
+using Entiy.Dtos;
 using IBLL;
 using IDal;
 using StorehouseSys.Models.Dtos;
@@ -12,33 +14,88 @@ namespace Bll
     public class R_UserInfo_RoleInfoBll : IR_UserInfo_RoleInfoBll
     {
         private readonly IR_UserInfo_RoleInfoDal _R_UserInfo_RoleInfoDal;
+        private readonly IUserInfoDal _userInfoDal;
         /// <summary>
         /// Dal
         /// </summary>
         /// <param name="r_UserInfo_RoleInfoDal"></param>
-        public R_UserInfo_RoleInfoBll(IR_UserInfo_RoleInfoDal r_UserInfo_RoleInfoDal)
+        public R_UserInfo_RoleInfoBll(IR_UserInfo_RoleInfoDal r_UserInfo_RoleInfoDal, IUserInfoDal userInfoDal)
         {
             _R_UserInfo_RoleInfoDal = r_UserInfo_RoleInfoDal;
+            _userInfoDal = userInfoDal;
         }
 
-
-
-
-
-
-        public bool AddRoleInfo(R_UserInfo_RoleInfoDtos roleInfoDtos, out string msg)
+        /// <summary>
+        /// 绑定角色
+        /// </summary>
+        /// <param name="roleInfoDtos"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool AddRoleInfo(string roleId, string[] userId, out string msg)
         {
-            throw new NotImplementedException();
+            msg = null;
+            //获取该角色列表
+            List<R_UserInfo_RoleInfo> rolelist = _R_UserInfo_RoleInfoDal.GetEntity().Where(a => a.RoleId == roleId).ToList();
+            List<R_UserInfo_RoleInfo> list = new List<R_UserInfo_RoleInfo>();
+            
+            foreach (var i in userId)
+            {
+                R_UserInfo_RoleInfo role = new R_UserInfo_RoleInfo();
+
+                if (rolelist.Where(a => a.UserId == i).Count() == 0)
+                {
+                    role.RoleId = roleId;
+                    role.UserId = i;
+                    role.CreateTime = DateTime.Now;
+                    role.Id = Guid.NewGuid().ToString();
+                    list.Add(role);
+                }
+                else {
+                    msg = "已有用户绑定该角色";
+                    return false;
+                }
+                
+            }
+            bool res =  _R_UserInfo_RoleInfoDal.AddEntityRange(list);
+            if (res)
+            {
+                msg = "绑定成功";
+                return res;
+            }
+            msg = "绑定失败";
+            return false;
+        }
+        /// <summary>
+        /// 获取用户信息用于绑定角色
+        /// </summary>
+        /// <returns></returns>
+        public List<UserInfoDtos> GetUserInfoDtos()
+        {
+            List<UserInfoDtos> list = _userInfoDal.GetEntity().Where(a => !a.IsDelete).Select(a => new UserInfoDtos
+            {
+                Id = a.Id,
+                UserName = a.UserName
+            }
+               ).ToList();
+            return list;
+
+
+        }
+        /// <summary>
+        /// 获取已绑定角色的用户数据
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public  List<string> GetBindUserInfo(string roleId)
+        {
+         
+
+            List<string> rightList = _R_UserInfo_RoleInfoDal.GetEntity().Where(r => r.RoleId == roleId).Select(r => r.UserId).ToList();
+            return rightList;
+
+
         }
 
-        public IQueryable<R_UserInfo_RoleInfoDtos> GetRoleInfo()
-        {
-            throw new NotImplementedException();
-        }
-        public IQueryable<UserInfoDtos> GetUser()
-        {
-            _R_UserInfo_RoleInfoDal.GetEntity();
-            return null;
-        }
     }
 }

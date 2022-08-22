@@ -11,14 +11,14 @@ namespace IDal
     /// <summary>
     /// UserInfoDal接口
     /// </summary>
-    public interface IUserInfoDal:IBaseDal<UserInfo>
+    public interface IUserInfoDal:IBaseDeleteDal<UserInfo>
     {
 
         //IQueryable<UserInfoDtos> GetUserInfos();
 
         //bool AddUserInfos(UserInfo userInfo);
 
-        bool DelUserInfo(string[] iD);
+        //bool DelUserInfo(string[] iD);
 
         UserInfo Login(string account);
 

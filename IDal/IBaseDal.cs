@@ -37,5 +37,11 @@ namespace IDal
         /// <param name="entity"></param>
         /// <returns></returns>
         public bool UpdateEntiry(T entity);
+        /// <summary>
+        /// 批量添加
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool AddEntityRange(List<T> entity);
     }
 }
