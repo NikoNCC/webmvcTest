@@ -8,7 +8,7 @@ namespace IDal
     /// <summary>
     /// 耗材信息表
     /// </summary>
-    public interface IConsumableInfoDal:IBaseDal<ConsumableInfo>
+    public interface IConsumableInfoDal:IBaseDeleteDal<ConsumableInfo>
     {
 
     }

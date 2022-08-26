@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layuimini/lib/layui-v2.6.3/css/layui.css" media="all">
     <link rel="stylesheet" href="../layuimini/css/public.css" media="all">
-    <script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
     <div class="layuimini-container">
@@ -20,9 +22,9 @@
                     <form class="layui-form layui-form-pane" action="">
                         <div class="layui-form-item">
                             <div class="layui-inline">
-                                <label class="layui-form-label">用户姓名</label>
+                                <label class="layui-form-label">耗材名</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="roleName" autocomplete="off" class="layui-input">
+                                    <input type="text" name="ConsumableName" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
@@ -37,6 +39,8 @@
                 <div class="layui-btn-container">
                     <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
                     <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>
+                    <button class="layui-btn layui-btn-sm" id="importBtn"> 入库 </button>
+                    <button class="layui-btn layui-btn-sm" id="exportBtn"> 导出 </button>
                 </div>
             </script>
 
@@ -44,26 +48,24 @@
 
             <script type="text/html" id="currentTableBar">
                 <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="AddRole">添加用户</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             </script>
 
         </div>
     </div>
-    <script src="/lib/jquery/dist/jquery.js" charset="utf-8"></script>
-    <script src="/layuimini/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
-
+    <script src="../layuimini/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
     <script>
-
         var table;
-        layui.use(['form', 'table'], function () {
+
+        layui.use(['form', 'table', 'upload'], function () {
             var $ = layui.jquery,
                 form = layui.form;
             table = layui.table;
+            var upload = layui.upload;
 
             table.render({
                 elem: '#currentTableId',
-                url: '/RoleInfo/GetRoleInfo',
+                url: '/ConsumableInfo/GetConsumableInfos',
                 toolbar: '#toolbarDemo',
                 defaultToolbar: ['filter', 'exports', 'print', {
                     title: '提示',
@@ -72,30 +74,59 @@
                 }],
                 cols: [[
                     { type: "checkbox", width: 50 },
-                    { field: 'roleName', title: '角色名' },
-                    { field: 'description', title: '描述', sort: true },
+                    { field: 'id', title: 'ID', hide: true, sort: true },
+                    { field: 'consumableName', minWidth: 80, title: '耗材名' },
+                    { field: 'description', minWidth: 150, title: '描述', sort: true },
+                    { field: 'specification', minWidth: 150, title: '耗材规格' },
+                    { field: 'num', minWidth: 150, title: '库存数量' },
+                    { field: 'unit', title: '单位', minWidth: 150 },
+                    { field: 'money', minWidth: 80, title: '价格', sort: true },
+                    { field: 'warningNum', minWidth: 80, title: '警告库存', sort: true },
                     { field: 'createTime', title: '创建时间', sort: true },
                     { title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center" }
                 ]],
                 limits: [10, 15, 20, 25, 50, 100],
-                limit: 15,
+                limit: 10,
                 page: true,
-                skin: 'line',
-                id: "testReload"
+                skin: 'line'
+            });
+
+            //导出按钮点击事件
+            $('#exportBtn').click(function () {
+                //文件下载
+                window.location = "/ConsumableInfo/DownLoad";
+            });
+
+
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#importBtn' //绑定元素
+                , url: '/ConsumableInfo/Upload' //上传接口
+                , accept: 'file'
+                , field: 'files'
+                , done: function (res) {
+                    //上传完毕回调
+                    layer.msg(res.msg);
+                }
+                , error: function () {
+                    //请求异常回调
+                }
             });
 
             // 监听搜索操作
             form.on('submit(data-search-btn)', function (data) {
-                var result = data.field.username
+
+                console.log(data);
+
                 //执行搜索重载
-                table.reload('testReload', {
+                table.reload('currentTableId', {
                     page: {
                         curr: 1
                     }
                     , where: {
-                        RoleName: data.field.roleName
+                        consumableInfoName: data.field.ConsumableName
                     }
-                });
+                }, 'data');
 
                 return false;
             });
@@ -106,70 +137,79 @@
             table.on('toolbar(currentTableFilter)', function (obj) {
                 if (obj.event === 'add') {  // 监听添加操作
                     var index = layer.open({
-                        title: '添加用户',
+                        title: '添加耗材',
                         type: 2,
                         shade: 0.2,
                         maxmin: true,
                         shadeClose: true,
                         area: ['100%', '100%'],
-                        content: '/RoleInfo/AddRoleInfoView',
+                        content: '/ConsumableInfo/AddConsumableInfoView',
                     });
                     $(window).on("resize", function () {
                         layer.full(index);
                     });
                 } else if (obj.event === 'delete') {  // 监听删除操作
-                    var checkStatus = table.checkStatus('testReload')
+                    var checkStatus = table.checkStatus('currentTableId')
                         , data = checkStatus.data;
-                    layer.confirm('真的删除行么', function (index) {
-                        var IdList = []
-                        for (var i = 0; i < checkStatus.data.length; i++) {
-                            //console.log(checkStatus.data[i].id)
-                            IdList.push(checkStatus.data[i].id)
-                            console.log(checkStatus.data[i].id)
-                        }
-                        console.log(IdList);
-                        $.ajax({
-                            url: '/RoleInfo/DalRoleInfo',
-                            type: 'delete',
-                            data: { IdList: IdList },
-                            success: function (res) {
-                                if (res.ses) {
-                                    // 刷新展示页面
-                                    layer.msg(res.msg)
-                                    table.reload('testReload', {
-                                        page: {
-                                            curr: 1
-                                        }
-                                        , where: {
+                    /* layer.alert(JSON.stringify(data));*/
+                    //console.log(data);
 
-                                        }
-                                    });
-                                } else {
-                                    layer.msg(res.msg)
-                                }
+                    //获取耗材的id数组
+                    var ids = [];
+                    for (var i = 0; i < data.length; i++) {
+                        ids.push(data[i].id);
+                    }
+
+                    //发起异步请求批量删除耗材
+                    $.ajax({
+                        url: '/ConsumableInfo/DeleteConsumableInfo',
+                        type: 'post',
+                        data: {
+                            ids: ids
+                        },
+                        success: function (res) {
+                            if (res.isSuccess) {
+                                //刷新列表
+                                table.reload('currentTableId', {
+                                    page: {
+                                        curr: 1
+                                    }
+                                    , where: {
+                                    }
+                                }, 'data');
+                            } else {
+                                layer.msg(res.msg);
                             }
-                        });
-
+                        }
                     });
+
+                } else if (obj.event === 'import') {  // 监听入库操作
+
+
                 }
             });
 
             //监听表格复选框选择
             table.on('checkbox(currentTableFilter)', function (obj) {
-
+                console.log(obj)
             });
 
             table.on('tool(currentTableFilter)', function (obj) {
                 var data = obj.data;
                 if (obj.event === 'edit') {
+
+                    //把当前点击的耗材id保存在sessionStorage中
+                    sessionStorage.setItem('id', data.id);
+
                     var index = layer.open({
-                        title: '编辑用户',
+                        title: '编辑耗材',
                         type: 2,
                         shade: 0.2,
                         maxmin: true,
                         shadeClose: true,
                         area: ['100%', '100%'],
-                        content: '/RoleInfo/UpdateRoleInfoView?id=' + data.id,
+                        content: '/ConsumableInfo/UpdateConsumableInfoView?id=' + data.id,
+
                     });
                     $(window).on("resize", function () {
                         layer.full(index);
@@ -177,51 +217,23 @@
                     return false;
                 } else if (obj.event === 'delete') {
                     layer.confirm('真的删除行么', function (index) {
+                        //发起异步请求软删除耗材信息
                         $.ajax({
-                            url: '/RoleInfo/DelRoleInfo',
-                            type: 'delete',
-                            data: { IdList: data.id },
+                            url: '/ConsumableInfo/DeleteConsumableInfo',
+                            type: 'post',
+                            data: {
+                                id: data.id
+                            },
                             success: function (res) {
-                                if (res.ses) {
-                                    // 刷新展示页面
-                                    layer.msg(res.msg)
-
-                                    table.reload('testReload', {
-                                        page: {
-                                            curr: 1
-                                        }
-                                        , where: {
-
-                                        }
-                                    });
-
-
-                                } else {
-                                    layui.alert(res.msg)
+                                if (res.isSuccess) {
+                                    obj.del();
+                                    layer.close(index);
                                 }
                             }
-                        })
-                        obj.del();
-                        layer.close(index);
-                    });
-                } else if (obj.event === 'AddRole') {
-                    var index = layer.open({
-                        title: '添加用户',
-                        type: 2,
-                        shade: 0.2,
-                        maxmin: true,
-                        shadeClose: true,
-                        area: ['100%', '100%'],
-                        content: '/RoleInfo/AddUserInfo_RoleInfoView?id=' + data.id,
-                    });
-                    $(window).on("resize", function () {
-                        layer.full(index);
-                    });
-                    return false;
+                        });
 
-                    obj.del();
-                    layer.close(index);
 
+                    });
                 }
             });
 

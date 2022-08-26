@@ -31,6 +31,6 @@ namespace IBLL
         /// <param name="roleInfoDtos"></param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public bool AddRoleInfo(string roleId, string[] userId, out string msg);
+        public bool BindRoleInfo(string roleId, string[] userId, out string msg);
     }
 }

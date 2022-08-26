@@ -161,6 +161,7 @@
 
             table.on('tool(currentTableFilter)', function(obj) {
                 var data = obj.data;
+                console.log(data.id);
                 if (obj.event === 'edit') {
                     var index = layer.open({
                         title: '编辑用户',

@@ -31,6 +31,9 @@ namespace StorehouseSys
         {
             services.AddControllersWithViews();
             services.AddSession();
+
+            //注入服务
+
             //注册UserInfoBLL 用户
             services.AddScoped<IUserInfoBLL, UserInfoBll>();
             //注册UserInfoDal
@@ -51,6 +54,27 @@ namespace StorehouseSys
             services.AddScoped<IMenuInfoDal, MenuInfoDal>();
             //菜单管理bll
             services.AddScoped<IMenuInfoBll, MenuInfoBll>();
+            //耗材信息Bll
+            services.AddScoped<IConsumableInfoBll, ConsumableInfoBll>();
+            //耗材信息Dal
+            services.AddScoped<IConsumableInfoDal, ConsumableInfoDal>();
+            //耗材类型Dal
+            services.AddScoped<ICategoryDal,CategoryDal>();
+            //耗材记录Dal
+            services.AddScoped<IConsumableRecordDal, ConsumableRecordDal>();
+            //工作流模板Dal
+            services.AddScoped<IWorkFlow_ModelDal,WorkFlow_ModelDal>();
+            //工作流模板Bll
+            services.AddScoped<IWorkFlow_ModelBll,WorkFlow_ModelBll>();
+           //工作流实例表Dal
+            services.AddScoped<IWorkFlow_InstanceDal, WorkFlow_InstanceDal>();
+            //工作流实例表Bll
+            services.AddScoped<IWorkFlow_InstanceBll, WorkFlow_InstanceBll>();
+            //工作流步骤表Dal
+            services.AddScoped<IWorkFlow_InstanceStepDal, WorkFlow_InstanceStepDal>();
+            //工作流步骤表Bll
+            services.AddScoped<IWorkFlow_InstanceStepBll, WorkFlow_InstanceStepBll>();
+          
 
             //注册数据库上下文
             services.AddDbContext<StorehouseSysDbContext>(options =>

@@ -32,13 +32,51 @@ namespace Bll
         /// <param name="msg"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public bool AddRoleInfo(string roleId, string[] userId, out string msg)
+        public bool BindRoleInfo(string roleId, string[] userId, out string msg)
         {
             msg = null;
             //获取该角色列表
             List<R_UserInfo_RoleInfo> rolelist = _R_UserInfo_RoleInfoDal.GetEntity().Where(a => a.RoleId == roleId).ToList();
+
+            List<string> rightList = _R_UserInfo_RoleInfoDal.GetEntity().Where(r => r.RoleId == roleId).Select(r => r.UserId).ToList();
+            ///解绑
+
+            if (userId.Length == 0)
+            {
+                foreach (var cleaRoleList in rolelist)
+                {
+                    _R_UserInfo_RoleInfoDal.DelRemoveEntity(cleaRoleList.Id);
+                }
+                msg = "角色清除完成，请重新绑定";
+                return true;
+            }
+
+
+            foreach (var role in rolelist)
+            {
+                bool isHas = false;
+                foreach (var userById in rightList)
+                {
+                    if (role.UserId == userById)
+                    {
+                        isHas = true;
+                    }
+
+                    if (!isHas)
+                    {
+                        _R_UserInfo_RoleInfoDal.DelRemoveEntity(role.Id);
+                        msg = "解绑成功";
+                    }
+                }
+
+            }
+
+
+
+
+
+            //绑定
             List<R_UserInfo_RoleInfo> list = new List<R_UserInfo_RoleInfo>();
-            
             foreach (var i in userId)
             {
                 R_UserInfo_RoleInfo role = new R_UserInfo_RoleInfo();
@@ -50,21 +88,19 @@ namespace Bll
                     role.CreateTime = DateTime.Now;
                     role.Id = Guid.NewGuid().ToString();
                     list.Add(role);
+
                 }
-                else {
-                    msg = "已有用户绑定该角色";
-                    return false;
-                }
-                
             }
-            bool res =  _R_UserInfo_RoleInfoDal.AddEntityRange(list);
+            bool res = _R_UserInfo_RoleInfoDal.AddEntityRange(list);
             if (res)
             {
                 msg = "绑定成功";
                 return res;
             }
-            msg = "绑定失败";
-            return false;
+            
+            return res;
+
+            
         }
         /// <summary>
         /// 获取用户信息用于绑定角色
@@ -87,9 +123,9 @@ namespace Bll
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        public  List<string> GetBindUserInfo(string roleId)
+        public List<string> GetBindUserInfo(string roleId)
         {
-         
+
 
             List<string> rightList = _R_UserInfo_RoleInfoDal.GetEntity().Where(r => r.RoleId == roleId).Select(r => r.UserId).ToList();
             return rightList;

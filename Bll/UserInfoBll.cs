@@ -87,7 +87,7 @@ namespace Bll
            
             if (userInfos != null)
             {
-                msg = "用户不存在";
+                msg = "用户已存在";
                 return false;
               
             }

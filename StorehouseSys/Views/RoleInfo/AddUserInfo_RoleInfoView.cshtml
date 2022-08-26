@@ -17,19 +17,18 @@
         layui.use(['form', 'transfer'], function () {
             var $ = layui.jquery;
             var transfer = layui.transfer;
-            var id = sessionStorage.getItem("id");
-            
+            var RoleId = window.location.search.substring(4);
+        
 
 
                 // 渲染穿梭框
             $.ajax({
                 url: "/RoleInfo/GetUser_Role",
                 type: "get",
-                data: { RoleId: id },
+                data: { RoleId: RoleId },
                 success: function (res) {
                     //渲染穿梭框
-                    console.log(res.data.rightList);
-                    console.log(res.data.list);
+                  
                     transfer.render({
                         elem: '#ShuttleBox'  //绑定元素
                         , showSearch: true
@@ -46,7 +45,7 @@
             // 确认保存穿梭框的数据
             $("#BindUserInfo").click(function () {
                 // 获取当前角色Id
-                var RoleId = parent.RoleInfoId
+                var RoleId = window.location.search.substring(4);
                 // 获取选中角色Id
                 var UserId = []
                 // 循环获取角色Id
@@ -56,14 +55,14 @@
                 }
                 // 发起ajax绑定角色
                 $.ajax({
-                    url: '/R_UserInfo_RoleInfo/BindUser',
+                    url: '/RoleInfo/BindRoleInfo',
                     type: 'post',
                     data: {
                         RoleId: RoleId,
                         UserId: UserId
                     },
                     success: function (res) {
-                        if (res.code == 200) {
+                        if (res.ses) {
                             layer.msg(res.msg)
                         } else {
                             layer.msg(res.msg)

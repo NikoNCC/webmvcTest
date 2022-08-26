@@ -12,7 +12,7 @@ namespace Entity
     /// <summary>
     /// 耗材记录
     /// </summary>
-    public class ConsumableRecord: DelEntity
+    public class ConsumableRecord: BaseEntity
     {
         /// <summary>
         /// 耗材id

@@ -54,13 +54,25 @@
           "target": "_self"
         },
         {
+          "title": "工作流模板",
+          "href": "/WorkFlow_Model/WorkFlow_ModelView",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
           "title": "角色管理",
           "href": "/RoleInfo/Index",
           "icon": "fa fa-file-text",
           "target": "_self"
         },
         {
-          "title": "表单示例",
+          "title": "耗材",
+          "href": "/ConsumableInfo/ConsumableInfoView",
+          "icon": "fa fa-file-text",
+          "target": "_self"
+        },
+        {
+          "title": "weq",
           "href": "",
           "icon": "fa fa-calendar",
           "target": "_self",

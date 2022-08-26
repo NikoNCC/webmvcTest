@@ -401,3 +401,11 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\MenuInfo\MenuInfoView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\MenuInfo\AddMenuInfoView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\MenuInfo\UpdateMenuInfoView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\ConsumableInfo\ConsumableInfoView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\ConsumableInfo\AddConsumableInfoView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\ConsumableInfo\UpdateConsumableInfoView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_Model\WorkFlow_ModelView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_Model\AddWorkFlow_ModelView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_Instance\WorkFlow_InstanceView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_Model\UpdateWorkFlow_ModelView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_Instance\AddWorkFlow_InstanceView.cshtml.g.cs

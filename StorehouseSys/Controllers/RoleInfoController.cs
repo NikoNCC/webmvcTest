@@ -241,7 +241,7 @@ namespace StorehouseSys.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult AddRoleInfo(string roleId, string[] userId ){
+        public IActionResult BindRoleInfo(string roleId, string[] userId ){
 
             if (userId == null) {
                 return Json(new AjaxResult
@@ -255,7 +255,7 @@ namespace StorehouseSys.Controllers
             }
 
             string msg;
-            bool res =  _IR_UserInfo_RoleInfoBll.AddRoleInfo(roleId, userId,out msg);
+            bool res =  _IR_UserInfo_RoleInfoBll.BindRoleInfo(roleId, userId,out msg);
 
             if (res)
             {

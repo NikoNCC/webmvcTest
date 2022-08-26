@@ -42,6 +42,21 @@ namespace Entiy
         /// 耗材记录数据集
         /// </summary>
         public DbSet<ConsumableRecord> ConsumableRecord { get; set; }
+        /// <summary>
+        ///  菜单绑定数据集
+        /// </summary>
         public DbSet<R_RoleInfo_MenuInfo> R_RoleInfo_MenuInfo { get; set; }
+        /// <summary>
+        /// 工作流实列数据集
+        /// </summary>
+        public DbSet<WorkFlow_Instance> WorkFlow_Instance { get; set; }
+        /// <summary>
+        /// 工作流步骤表数据集
+        /// </summary>
+        public DbSet<WorkFlow_InstanceStep> WorkFlow_InstanceStep { get; set; }
+        /// <summary>
+        /// 工作流模板表数据集
+        /// </summary>
+        public DbSet<WorkFlow_Model> WorkFlow_Model { get; set; }
     }
 }
