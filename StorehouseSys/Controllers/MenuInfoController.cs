@@ -45,6 +45,7 @@ namespace StorehouseSys.Controllers
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult GetMenuInfo(int page, int limit)
         {
             List<MenuInfo> menulist= _iMenuInfoBll.GetMenuInfo().Skip((page - 1) * limit).Take(limit).ToList(); ;
@@ -68,6 +69,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="menuInfo"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult AddMenuInfo(MenuInfoDtos menuInfo)
         {
          AjaxResult result = new AjaxResult();
@@ -90,6 +92,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult GetUpdateMenuInfo(string id)
         {
             AjaxResult result = new AjaxResult();
@@ -112,6 +115,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="menuInfoDtos"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult UpdateMenuInfo(MenuInfoDtos menuInfoDtos)
         {
             AjaxResult result = new AjaxResult();
@@ -133,6 +137,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="ids"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult DelMenuInfo(string[] ids)
         {
             string msg;

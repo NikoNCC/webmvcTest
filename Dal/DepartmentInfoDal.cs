@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Dal
 {
+    /// <summary>
+    ///部门信息
+    /// </summary>
     public class DepartmentInfoDal :BaseDal<DepartmentInfo> , IDepartmentInfoDal
     {
         private StorehouseSysDbContext _db;

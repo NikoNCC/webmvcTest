@@ -8,6 +8,9 @@ using System.Text;
 
 namespace IDal
 {
+    /// <summary>
+    /// 部门信息Dal接口
+    /// </summary>
     public interface IDepartmentInfoDal:IBaseDal<DepartmentInfo>
     {
         //IQueryable<DepartmentInfoDtos>  GetDepartment();

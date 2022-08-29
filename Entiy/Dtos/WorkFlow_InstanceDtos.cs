@@ -24,7 +24,7 @@ namespace Entiy.Dtos
         /// <summary>
         /// 审核状态
         /// </summary>
-        public WorkFlow_InstanceEnum Status { get; set; }
+        public string Status { get; set; }
         /// <summary>
         /// 描述
         /// </summary>

@@ -68,6 +68,7 @@ namespace StorehouseSys.Controllers
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult GetRoleInfo(string roleName, int page, int limit)
         {
             IQueryable<RoleInfoDtos> roleInfo = _IRoleInfoBll.GetRoleInfo();
@@ -95,6 +96,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult DalRoleInfo(string[] IdList)
         {
             string msg;
@@ -124,6 +126,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="roleInfoDtos"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult AddRoleInfo(RoleInfoDtos roleInfoDtos)
         {
             if (string.IsNullOrEmpty(roleInfoDtos.RoleName))
@@ -164,6 +167,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="roleInfoDtos"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult UpdateRoleInfo(RoleInfoDtos roleInfoDtos) {
 
             string msg;
@@ -196,6 +200,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult GetRoleInfoById(string id)
         {
             RoleInfo roleInfo =_IRoleInfoBll.GetRoleInfoById(id);

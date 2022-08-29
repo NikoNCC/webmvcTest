@@ -18,7 +18,7 @@ namespace Entiy
         /// <summary>
         /// 状态
         /// </summary>
-        public int Status { get; set; }
+        public WorkFlow_InstanceEnum Status { get; set; }
         /// <summary>
         /// 描述
         /// </summary>

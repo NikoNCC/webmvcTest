@@ -28,7 +28,7 @@ namespace Entiy
         /// <summary>
         /// 审核状态
         /// </summary>
-        public int ReviewStatus { get; set; }
+        public WorkFlow_InstanceStepStatusEnum ReviewStatus { get; set; }
         /// <summary>
         /// 审核时间
         /// </summary>

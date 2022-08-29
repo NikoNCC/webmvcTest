@@ -123,6 +123,7 @@ namespace StorehouseSys.Controllers
         /// <param name="description"></param>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult UpdateWorkFlow_Model(string title, string description, string id)
         {
             AjaxResult res = new AjaxResult();

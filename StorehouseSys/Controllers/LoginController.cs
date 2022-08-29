@@ -33,6 +33,7 @@ namespace StorehouseSys.Controllers
         /// <param name="account"></param>
         /// <param name="passWord"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult Login(string account, string passWord)
         {
             if (string.IsNullOrEmpty(account))

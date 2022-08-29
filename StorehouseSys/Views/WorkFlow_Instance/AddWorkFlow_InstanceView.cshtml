@@ -29,18 +29,6 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">描述</label>
-            <div class="layui-input-block">
-                <textarea name="Description"  lay-reqtext="描述名称不能为空" placeholder="请输入描述名称" value="" class="layui-input"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请数量</label>
-            <div class="layui-input-block">
-                <textarea name="OutNum" lay-reqtext="数量不能为空" placeholder="请输入数量" value="" class="layui-input"></textarea>
-            </div>
-        </div>
-           <div class="layui-form-item">
             <label class="layui-form-label">耗材类型</label>
             <div class="layui-input-block">
                 @*<input type="text" name="CategoryId" placeholder="请输入耗材类型id" value="" class="layui-input">*@
@@ -50,9 +38,22 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">申请数量</label>
+            <div class="layui-input-block">
+                <textarea name="OutNum" lay-reqtext="数量不能为空" placeholder="请输入数量" value="" class="layui-input"></textarea>
+            </div>
+        </div>
+     
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述</label>
+            <div class="layui-input-block">
+                <textarea name="Description" lay-reqtext="描述名称不能为空" placeholder="请输入描述名称" value="" class="layui-input"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">申请理由</label>
             <div class="layui-input-block">
-                <textarea name="Reason"  placeholder="请输入数量" value="" class="layui-input"></textarea>
+                <textarea name="Reason"  placeholder="请输入理由" value="" class="layui-input"></textarea>
             </div>
         </div>
 
@@ -98,20 +99,14 @@
                 }
             });
             form.on('submit(saveBtn)', function (data) {
-
-
-                console.log(data.field);
                 //发起异步请求
                 $.ajax({
                     url: '/WorkFlow_Instance/AddWorkFlow_Instance',
                     type: 'post',
-
                     data: data.field,
                     success: function (res) {
-                       
                         if (res.ses) {
                             //刷新列表
-
                             parent.table.reload('testReload', {
                                 page: {
                                     curr: 1
