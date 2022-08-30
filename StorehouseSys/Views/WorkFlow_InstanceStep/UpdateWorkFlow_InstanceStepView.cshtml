@@ -62,7 +62,7 @@
                 <input type="text" name="ReviewReason" lay-verify="required" lay-reqtext="审核意见不能为空" placeholder="请输入审核意见" value="" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" id="UserRole_ReviewStatus">
             <label class="layui-form-label required">审核情况</label>
             <div class="layui-input-block">
                 <input type="radio" name="Status" value=2 title="同意" checked>
@@ -86,7 +86,7 @@
                 $ = layui.$;
 
             var id = window.location.search.substring(4);
-            console.log(id);
+          
 
             $.ajax({
                 url: '/WorkFlow_InstanceStep/GetWorkFlow_InstanceStepById',
@@ -95,15 +95,31 @@
                     id: id
                 },
                 success: function (res) {
-                    console.log(res.data);
-                    form.val("formTest", { //formTest 即 class="layui-form" 所在元素属性 lay-filter="" 对应的值
-                        "Id": res.data.id
-                        , "Title": res.data.title
-                        , "ConsumableName": res.data.consumableName
-                        , "OutNum": res.data.outNum
-                        , "Reason": res.data.reason
-                        , "CreatorName": res.data.creatorName
-                    });
+                    if(res.ses)
+                    {
+                    
+                        console.log(res.data);
+                        form.val("formTest", { //formTest 即 class="layui-form" 所在元素属性 lay-filter="" 对应的值
+                            "Id": res.data.id
+                            , "Title": res.data.title
+                            , "ConsumableName": res.data.consumableName
+                            , "OutNum": res.data.outNum
+                            , "Reason": res.data.reason
+                            , "CreatorName": res.data.creatorName
+                        });
+                        // 判断用户，通过用户角色展示不同的dom元素
+                      
+                     
+                        if (res.data.roleName == '普通员工') {
+                           
+                             $("#UserRole_ReviewStatus").css("display", "none")
+                              
+                            $('input[name="OutNum"]').attr("disabled", false)
+                        }
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                   
                 }
             });
 

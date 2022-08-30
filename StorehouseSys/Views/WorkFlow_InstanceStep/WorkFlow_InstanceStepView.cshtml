@@ -43,8 +43,11 @@
             <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
             <script type="text/html" id="currentTableBar">
-                <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
-
+                {{# if(d.reviewStatus == "审核中"){ }}
+                <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">审核</a>
+                {{# } else { }}
+              
+                {{# } }}
             </script>
 
         </div>

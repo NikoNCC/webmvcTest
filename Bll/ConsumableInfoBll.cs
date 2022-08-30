@@ -146,7 +146,15 @@ namespace Bll
                 return false;
             
              }
-            bool res =_IConsumableInfoDal.UpdateEntiry(consumableInfo);
+            list.Unit=consumableInfo.Unit;
+            list.Specification = consumableInfo.Specification;
+            list.CategoryId = consumableInfo.CategoryId;
+            list.Money =consumableInfo.Money;
+            list.WarningNum = consumableInfo.WarningNum;
+            list.CreateTime = consumableInfo.CreateTime;
+            list.Description = consumableInfo.Description;
+           
+            bool res =_IConsumableInfoDal.UpdateEntiry(list);
             if (res) {
                 msg = "修改成功";
                 return res;

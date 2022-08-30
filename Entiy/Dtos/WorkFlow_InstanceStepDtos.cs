@@ -82,5 +82,9 @@ namespace Entiy.Dtos
         /// 申请理由
         /// </summary>
         public string Reason { get; set; }
+        /// <summary>
+        /// 角色名
+        /// </summary>
+        public string RoleName { get; set; }
     }
 }
