@@ -2,6 +2,7 @@
 using Entiy.Dtos;
 using Entiy.Tools;
 using IBLL;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -59,13 +60,18 @@ namespace StorehouseSys.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetWorkFlow_InstanceStepList(int page, int limit)
+        public IActionResult GetWorkFlow_InstanceStepList(string title,int page, int limit)
         {
 
             AjaxResult res = new AjaxResult();
             string userId = HttpContext.Session.GetString("Id");
             int count;
             List<WorkFlow_InstanceStepDtos> workFlow_InstanceStepList = _IWorkFlow_InstanceStepBll.GetWorkFlow_InstanceStepList(page, limit, userId, out count);
+
+            if (title != null)
+            {
+                workFlow_InstanceStepList = workFlow_InstanceStepList.Where(a => a.Title.Contains(title)).ToList();
+            }
 
             if (workFlow_InstanceStepList != null)
             {
@@ -112,7 +118,13 @@ namespace StorehouseSys.Controllers
 
             return Json(res);
         }
-
+        /// <summary>
+        /// 申请步骤
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="reviewReason"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public IActionResult UpdateWorkFlow_InstanceStep(string id, string reviewReason, WorkFlow_InstanceStepStatusEnum status)
         {
             AjaxResult res = new AjaxResult();

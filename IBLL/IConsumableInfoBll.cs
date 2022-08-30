@@ -1,7 +1,9 @@
 ﻿using Entity;
 using Entiy.Dtos;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace IBLL
@@ -17,5 +19,7 @@ namespace IBLL
         List<ConsumableInfo> GetConsumableInfos();
         ConsumableInfo GetUpdateConsumableInfo(string id,out string msg);
         bool UpdateConsumableInfo(ConsumableInfo consumableInfo, out string msg);
+        bool UploadConsumableInfo(IFormFile formFile, string userId, out string msg);
+        FileStream OutOfStockBll();
     }
 }

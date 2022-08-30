@@ -22,7 +22,7 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">模板名</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="departmentName" autocomplete="off" class="layui-input">
+                                    <input type="text" name="title" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
@@ -32,14 +32,6 @@
                     </form>
                 </div>
             </fieldset>
-
-            <script type="text/html" id="toolbarDemo">
-                <div class="layui-btn-container">
-                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
-
-                </div>
-            </script>
-
             <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
             <script type="text/html" id="currentTableBar">
@@ -75,7 +67,7 @@
                     icon: 'layui-icon-tips'
                 }],
                 cols: [[
-                    { type: "checkbox", width: 50 },
+                 
                     { field: 'title', title: '模板标题' },
                     { field: 'creatorName', title: '申请人' },
                     { field: 'consumableName', title: '耗材名称' },
@@ -105,7 +97,7 @@
                         curr: 1
                     }
                     , where: {
-                        departmentName: data.field.title
+                        title: data.field.title
                     }
                 });
 
@@ -115,22 +107,7 @@
             /**
              * toolbar监听事件
              */
-            table.on('toolbar(currentTableFilter)', function (obj) {
-                if (obj.event === 'add') {  // 监听添加操作
-                    var index = layer.open({
-                        title: '添加模板',
-                        type: 2,
-                        shade: 0.2,
-                        maxmin: true,
-                        shadeClose: true,
-                        area: ['100%', '100%'],
-                        content: '/WorkFlow_Instance/AddWorkFlow_InstanceView',
-                    });
-                    $(window).on("resize", function () {
-                        layer.full(index);
-                    });
-                }
-            });
+  
 
             //监听表格复选框选择
 

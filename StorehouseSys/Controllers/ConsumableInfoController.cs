@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Entiy;
 using Entiy.Dtos;
+using Microsoft.AspNetCore.Http;
+using Bll;
+using System.IO;
 
 namespace StorehouseSys.Controllers
 {
@@ -156,6 +159,51 @@ namespace StorehouseSys.Controllers
             }
             res.Msg = msg;
             return Json(res);
+        }
+
+        /// <summary>
+        /// 上传文件耗材入库
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Upload(IFormFile formFile)
+        {
+            AjaxResult res = new AjaxResult();
+            // 获取到当前登录用户Id
+            string userId = HttpContext.Session.GetString("Id");
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                res.Msg = "登录已过期";
+                return Json(res);
+            }
+            if (formFile == null)
+            {
+                res.Msg = "请选择excel文件上传";
+                return Json(res);
+            }
+            string msg;
+            bool result = _IConsumableInfoBll.UploadConsumableInfo(formFile, userId, out msg);
+
+            if (result)
+            {
+
+                res.code = 0;
+                res.Ses = true;
+                
+            }
+            res.Msg = msg;
+
+            return Json(res);
+        }
+
+        /// <summary>
+        /// 耗材下载
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult DownLoad()
+        {
+           FileStream file = _IConsumableInfoBll.OutOfStockBll();
+            return File(file, "application/octet-stream", "test.xlsx");
         }
     }
 }

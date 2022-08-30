@@ -411,3 +411,9 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcore
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_InstanceStep\WorkFlow_InstanceStepView.cshtml.g.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\StorehouseSys.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\obj\Debug\netcoreapp3.1\Razor\Views\WorkFlow_InstanceStep\UpdateWorkFlow_InstanceStepView.cshtml.g.cs
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\NPOI.OOXML.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\NPOI.OpenXml4Net.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\NPOI.OpenXmlFormats.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\NPOI.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\StorehouseSys\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll

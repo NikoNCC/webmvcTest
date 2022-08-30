@@ -53,7 +53,8 @@
 
         </div>
     </div>
-    <script src="../layuimini/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="~/layui/layui.js" charset="utf-8"></script>
+    
     <script>
         var table;
 
@@ -62,6 +63,7 @@
                 form = layui.form;
             table = layui.table;
             var upload = layui.upload;
+            
 
             table.render({
                 elem: '#currentTableId',
@@ -88,7 +90,8 @@
                 limits: [10, 15, 20, 25, 50, 100],
                 limit: 10,
                 page: true,
-                skin: 'line'
+                skin: 'line',
+                id: "currentTableId"
             });
 
             //导出按钮点击事件
@@ -103,10 +106,18 @@
                 elem: '#importBtn' //绑定元素
                 , url: '/ConsumableInfo/Upload' //上传接口
                 , accept: 'file'
-                , field: 'files'
+                , field: 'formFile'
                 , done: function (res) {
                     //上传完毕回调
                     layer.msg(res.msg);
+                    table.reloadData('currentTableId', {
+                        page: {
+                            curr: 1
+                        }
+                        , where: {
+                        }
+                    }, 'data');
+
                 }
                 , error: function () {
                     //请求异常回调
