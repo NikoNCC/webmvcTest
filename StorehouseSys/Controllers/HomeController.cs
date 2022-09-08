@@ -1,4 +1,5 @@
 ﻿using Bll;
+using Comm;
 using Entiy;
 using Entiy.Tools;
 using IBLL;
@@ -411,6 +412,7 @@ namespace StorehouseSys.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [ExcludeLogin]
         public IActionResult ExitLogin()
         {
             HttpContext.Session.Remove("UserName");

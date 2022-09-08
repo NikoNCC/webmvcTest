@@ -13,6 +13,6 @@ namespace IBLL
     {
         WorkFlow_InstanceStepDtos GetWorkFlow_InstanceStepById(string id, out string msg);
         List<WorkFlow_InstanceStepDtos> GetWorkFlow_InstanceStepList(int page,  int limit, string userId, out int count);
-        bool UpdateWorkFlow_InstanceStep(string id, string reviewReason, WorkFlow_InstanceStepStatusEnum status, string userId ,out string msg);
+        bool UpdateWorkFlow_InstanceStep(string id, string reviewReason, WorkFlow_InstanceStepStatusEnum status,int outNum, string userId ,out string msg);
     }
 }

@@ -19,10 +19,11 @@ namespace StorehouseSys.Controllers
             _userInfoBLL = userInfoBLL;
         }
 
-       /// <summary>
-       /// 登录页面
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// 登录页面
+        /// </summary>
+        /// <returns></returns>
+        [ExcludeLogin]
         public IActionResult LoginView()
         {
             return View();

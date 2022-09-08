@@ -32,6 +32,14 @@ namespace StorehouseSys
             services.AddControllersWithViews();
             services.AddSession();
 
+            //注册数据库上下文
+            services.AddDbContext<StorehouseSysDbContext>(options =>
+                                    options.UseSqlServer("name=ConnectionStrings:UseSqlServer"));
+            //注册全局过滤器
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(LoginFiter));
+            });
             //注入服务
 
             //注册UserInfoBLL 用户
@@ -76,14 +84,7 @@ namespace StorehouseSys
             services.AddScoped<IWorkFlow_InstanceStepBll, WorkFlow_InstanceStepBll>();
           
 
-            //注册数据库上下文
-            services.AddDbContext<StorehouseSysDbContext>(options =>
-                                    options.UseSqlServer("name=ConnectionStrings:UseSqlServer"));
-            //注册全局过滤器
-            services.AddMvc(options =>
-                          {
-                              options.Filters.Add(typeof(LoginFiter));
-                          });
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

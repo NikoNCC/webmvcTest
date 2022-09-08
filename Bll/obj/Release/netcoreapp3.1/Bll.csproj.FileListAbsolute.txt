@@ -13,3 +13,9 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\B
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.csproj.CopyComplete
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.dll
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\obj\Release\netcoreapp3.1\Bll.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Comm.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\IBLL.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\IDal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\Comm.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\IBLL.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Bll\bin\Release\netcoreapp3.1\IDal.pdb

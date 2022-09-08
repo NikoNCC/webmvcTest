@@ -2,7 +2,8 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\777\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\777\\.nuget\\packages"
+      "C:\\Users\\777\\.nuget\\packages",
+      "D:\\Android\\NuGetPackages"
     ]
   }
 }

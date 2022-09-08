@@ -125,7 +125,7 @@ namespace StorehouseSys.Controllers
         /// <param name="reviewReason"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        public IActionResult UpdateWorkFlow_InstanceStep(string id, string reviewReason, WorkFlow_InstanceStepStatusEnum status)
+        public IActionResult UpdateWorkFlow_InstanceStep(string id, string reviewReason,int outNum, WorkFlow_InstanceStepStatusEnum status)
         {
             AjaxResult res = new AjaxResult();
             string msg;
@@ -146,7 +146,7 @@ namespace StorehouseSys.Controllers
                 return Json(res);
             }
             string userId = HttpContext.Session.GetString("Id");
-            bool result = _IWorkFlow_InstanceStepBll.UpdateWorkFlow_InstanceStep(id, reviewReason, status, userId, out msg);
+            bool result = _IWorkFlow_InstanceStepBll.UpdateWorkFlow_InstanceStep(id, reviewReason, status, outNum, userId, out msg);
             if (result)
             {
                 res.code = 0;

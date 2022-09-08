@@ -243,7 +243,7 @@ namespace Bll
         /// <param name="msg"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public bool UpdateWorkFlow_InstanceStep(string id, string reviewReason, WorkFlow_InstanceStepStatusEnum status, string userId, out string msg)
+        public bool UpdateWorkFlow_InstanceStep(string id, string reviewReason, WorkFlow_InstanceStepStatusEnum status,int outNum,string userId, out string msg)
         {
 
             msg = null;
@@ -368,6 +368,7 @@ namespace Bll
                             }
                             //结束工作流实例
                             sfiData.Status = WorkFlow_InstanceEnum.结束;
+                          
                             bool res_4 = _IWorkFlow_InstanceDal.UpdateEntiry(sfiData);
                             if (!res_4)
                             {
@@ -418,8 +419,6 @@ namespace Bll
                                 ReviewStatus = WorkFlow_InstanceStepStatusEnum.审核中,
                                 ReviewerId = departmentInfo.LeaderId,
                                 BeforeStepId= stepData.Id,
-                                
-                                
                             };
                             bool res_2 = _IWorkFlow_InstanceStepDal.AddEntity(wfis);
                             if (!res_2)
@@ -447,6 +446,7 @@ namespace Bll
                                                on a.RoleId equals b.Id
                                                select b.RoleName
                                           ).ToList();
+                        
                         if (leader.Contains("部门经理"))
                         {
                             WorkFlow_InstanceStep stepData2 = new WorkFlow_InstanceStep()
@@ -472,6 +472,16 @@ namespace Bll
                         }
                         else if (leader.Contains("仓库管理员"))
                         {
+                            sfiData.OutNum = outNum;
+
+                            bool res_001 = _IWorkFlow_InstanceDal.UpdateEntiry(sfiData);
+                            if(!res_001)
+                             {
+
+                                msg = "驳回：更改工作流失败";
+                                tran.Rollback();
+                                return false;
+                            }
                             WorkFlow_InstanceStep stepData2 = new WorkFlow_InstanceStep()
                             {
                                 Id = Guid.NewGuid().ToString(),

@@ -11,3 +11,5 @@ C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\D
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.csproj.CopyComplete
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.dll
 C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\obj\Release\netcoreapp3.1\Dal.pdb
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\IDal.dll
+C:\Users\777\Desktop\.NetCore6Text\StorehouseSys\Dal\bin\Release\netcoreapp3.1\IDal.pdb
